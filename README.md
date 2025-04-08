@@ -1,5 +1,6 @@
 # SmartXMLAnalyser
-![Accenture](https://www.accenture.com/fr-fr)
+## Hackathon: Accenture project - TEAM 11
+
 <p align="center">
    <img src="https://github.com/Biline-dev/SmartXMLAnalyser/raw/main/logo.png" alt="Logo" />
 </p>
