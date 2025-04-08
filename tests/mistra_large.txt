@@ -1,0 +1,59 @@
+
+Error message: failed validating {'modelIdentCode': 'BRAKE', 'systemDiffCode': 'AAA', 'systemCode': 'DA1', 'subSystemCode': '0', 'subSubSriant': 'AA', 'infoCode': '341', 'infoCodeVariant': 'A', 'itemLocationCode': 'A'} with XsdAttributeGroup(['modelIdentCode', 'systemDiffCode', 'systemCode', 'subSystemCode', 'subSubSystemCode', 'assyCode', 'disassyCode', 'disassyCodeVariant', 'infoCode', 'infoCodeVariant', 'itemLocationCode', 'learnCode', 'learnEventCode']):
+
+Reason: missing required attribute 'subSubSystemCode'
+
+Schema component:
+
+  <xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="dmCodeElemType">
+      <xs:attribute ref="modelIdentCode" use="required" />
+      <xs:attribute ref="systemDiffCode" use="required" />
+      <xs:attribute ref="systemCode" use="required" />
+      <xs:attribute ref="subSystemCode" use="required" />
+      <xs:attribute ref="subSubSystemCode" use="required" />
+      <xs:attribute ref="assyCode" use="required" />
+      <xs:attribute ref="disassyCode" use="required" />
+      <xs:attribute ref="disassyCodeVariant" use="required" />
+      <xs:attribute ref="infoCode" use="required" />
+      <xs:attribute ref="infoCodeVariant" use="required" />
+      <xs:attribute ref="itemLocationCode" use="required" />
+      <xs:attribute ref="learnCode" />
+      <xs:attribute ref="learnEventCode" />
+  </xs:complexType>
+
+Instance type: <class 'xml.etree.ElementTree.Element'>
+
+Instance:
+
+  <dmCode modelIdentCode="BRAKE" systemDiffCode="AAA" systemCode="DA1" subSystemCode="0" subSubSriant="AA" infoCode="341" infoCodeVariant="A" itemLocationCode="A" />
+
+Path: /dmodule/identAndStatusSection/dmAddress/dmIdent/dmCode
+
+
+🔧 LLM Suggestion:
+
+ The error is caused by a missing required attribute 'subSubSystemCode' in the XML instance. The XML schema (XSD) defines 'subSubSystemCode' as a required attribute in the complex type 'dmCodeElemType', but it is missing in the XML instance.
+
+To fix the error, add the missing 'subSubSystemCode' attribute to the 'dmCode' element in the XML instance. The value of the attribute should be determined based on the specific context of your data.       
+
+Here is an example of the correct XML structure with the 'subSubSystemCode' attribute added:
+
+```xml
+<dmodule>
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="BRAKE"
+                systemDiffCode="AAA"
+                systemCode="DA1"
+                subSystemCode="0"
+                subSubSystemCode="YOUR_VALUE_HERE" <!-- Add this line with the appropriate value -->
+                subSubSriant="AA"
+                infoCode="341"
+                infoCodeVariant="A"
+                itemLocationCode="A" />
+      </dmIdent>
+    </dmAddress>
+  </identAndStatusSection>
+</dmodule>
+```

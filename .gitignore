@@ -1,0 +1,11 @@
+test.py
+__pycache__/
+.ipynb_checkpoints
+*.pyc
+.agent
+.validator
+/data
+.env
+validator_agent.env
+/validator.py
+/validator.ipynb
