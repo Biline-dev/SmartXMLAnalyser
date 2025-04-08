@@ -7,5 +7,5 @@ __pycache__/
 /data
 .env
 validator_agent.env
-/validator.py
+validator.py
 /validator.ipynb
