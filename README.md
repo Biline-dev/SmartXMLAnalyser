@@ -1,12 +1,11 @@
 # SmartXMLAnalyser
 ## Hackathon: Accenture project - TEAM 11
+* Nom prenom
+* 
 
 <p align="center">
    <img src="https://github.com/Biline-dev/SmartXMLAnalyser/raw/main/logo.png" alt="Logo" />
 </p>
-
-## Hackathon: Team 11, Accenture project 
-blablba 🚀
 
 ## Table of Contents 📚
 - [Project Scope](#project-scope)
