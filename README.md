@@ -18,6 +18,4 @@
 
 ## **Project Focus**
 
-## <img src="https://github.com/Biline-dev/SmartXMLAnalyser/raw/main/logo.png" alt="Logo" width="50" /> Use Case: Intelligent Multi-Agent XML Modifier 
-
 
