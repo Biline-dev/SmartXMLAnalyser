@@ -1,4 +1,9 @@
 # SmartXMLAnalyser
+
+<p align="center">
+   <img src="https://github.com/Biline-dev/SmartXMLAnalyser/raw/main/logo.png" alt="Logo" />
+</p>
+
 ## Hackathon: Team 11, Accenture project 
 blablba 🚀
 
@@ -13,8 +18,8 @@ blablba 🚀
 
 ## **Project Focus**
 
-## Use Case: Intelligent Multi-Agent XML Modifier
-
-<p align="center">
-   <img src="https://github.com/Biline-dev/SmartXMLAnalyser/raw/main/logo.png" alt="Logo" />
+## Use Case: Intelligent Multi-Agent XML Modifier <p align="center">
+   <img src="https://github.com/Biline-dev/SmartXMLAnalyser/raw/main/logo.png" alt="Logo" width="100" />
 </p>
+
+
