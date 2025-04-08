@@ -695,46 +695,46 @@ def main(xml_file_path:str, instructions_directory:str, output_directory:str, ex
 
 # ---- Uncomment to keep only the version of the command line you'd like to use -----
 
-# ## --- Scenrio 1: All arguments are passed directly into the script---
-# ### Command line to run with scenario 1: python3 xml_modifier.py
+## --- Scenrio 1: All arguments are passed directly into the script---
+### Command line to run with scenario 1: python3 xml_modifier.py
 
-# # File paths - replace with your actual file paths
-# xml_file_path = "testing_cases/TC1_additions_1/base_documents/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML"
-# instructions_directory = "testing_cases/TC1_additions_1/instructions copy/"
-# output_directory = "output/"
-# expected_result = 'testing_cases/TC1_additions_1/expected_result/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML'
-# model_name = 'sonnet'
-
-# if __name__ == "__main__":
-#     main(xml_file_path, instructions_directory, output_directory, expected_result, model_name)
-
-
-
-## --- Scenrio 2: All arguments are passed using the command line interface ---
-### example Command line to run with scenario 1: 
-    # python xml_modifier.py \
-    # --xml "testing_cases/TC1_additions_1/base_documents/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML" \
-    # --instructions "testing_cases/TC1_additions_1/instructions copy/" \
-    # --output "output/" \
-    # --expected "testing_cases/TC1_additions_1/expected_result/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML" \
-    # --model "sonnet"
-
-import argparse
+# File paths - replace with your actual file paths
+xml_file_path = "testing_cases/TC1_additions_1/base_documents/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML"
+instructions_directory = "testing_cases/TC1_additions_1/instructions copy/"
+output_directory = "output/"
+expected_result = 'testing_cases/TC1_additions_1/expected_result/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML'
+model_name = 'sonnet'
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Process XML files with instructions')
-    parser.add_argument('--xml', required=True, help='Path to base XML file')
-    parser.add_argument('--instructions', required=True, help='Path to instructions directory')
-    parser.add_argument('--output', required=True, help='Path to output directory')
-    parser.add_argument('--expected', required=True, help='Path to expected result XML file')
-    parser.add_argument('--model', default='sonnet', help='Model name to use')
+    main(xml_file_path, instructions_directory, output_directory, expected_result, model_name)
+
+
+
+# # --- Scenrio 2: All arguments are passed using the command line interface ---
+# ## example Command line to run with scenario 1: 
+#     python xml_modifier.py \
+#     --xml "testing_cases/TC1_additions_1/base_documents/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML" \
+#     --instructions "testing_cases/TC1_additions_1/instructions copy/" \
+#     --output "output/" \
+#     --expected "testing_cases/TC1_additions_1/expected_result/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML" \
+#     --model "sonnet"
+
+# import argparse
+
+# if __name__ == "__main__":
+#     parser = argparse.ArgumentParser(description='Process XML files with instructions')
+#     parser.add_argument('--xml', required=True, help='Path to base XML file')
+#     parser.add_argument('--instructions', required=True, help='Path to instructions directory')
+#     parser.add_argument('--output', required=True, help='Path to output directory')
+#     parser.add_argument('--expected', required=True, help='Path to expected result XML file')
+#     parser.add_argument('--model', default='sonnet', help='Model name to use')
     
-    args = parser.parse_args()
+#     args = parser.parse_args()
     
-    main(
-        xml_file_path=args.xml,
-        instructions_directory=args.instructions,
-        output_directory=args.output,
-        expected_result=args.expected,
-        model_name=args.model
-    )
+#     main(
+#         xml_file_path=args.xml,
+#         instructions_directory=args.instructions,
+#         output_directory=args.output,
+#         expected_result=args.expected,
+#         model_name=args.model
+#     )
