@@ -5,7 +5,7 @@
    <identAndStatusSection>
       <dmAddress>
          <dmIdent>
-            <dmCode modelIdentCode="BRAKE" systemDiffCode="AAA" systemCode="DA1" subSystemCode="0" subSubSystemCode="AA" assyCode="ABC" disassyCode="DEF" disassyCodeVariant="GHI" infoCode="341" infoCodeVariant="A" itemLocationCode="A"/><language countryIsoCode="US" languageIsoCode="en"/>
+            <dmCode modelIdentCode="BRAKE" systemDiffCode="AAA" systemCode="DA1" subSystemCode="0" subSubSystemCode="A" assyCode="AB" disassyCode="DE" disassyCodeVariant="GHI" infoCode="341" infoCodeVariant="A" itemLocationCode="A"/><language countryIsoCode="US" languageIsoCode="en"/>
             <issueInfo issueNumber="002" inWork="00"/>
          </dmIdent>
          <dmAddressItems>
@@ -151,6 +151,12 @@
          </preliminaryRqmts>
          <mainProcedure>
             <proceduralStep>
+               <title>Pre-Operational Checks</title>
+               <proceduralStep>
+                  <para>Inspect the brake lever for signs of wear or corrosion.</para>
+               </proceduralStep>
+            </proceduralStep>
+            <proceduralStep>
                <para>Put the bicycle in a vertical position.</para>
             </proceduralStep>
             <proceduralStep>
@@ -162,8 +168,7 @@
             <proceduralStep>
                <para>Make sure that the wheels lock and the bicycle stops.</para>
             </proceduralStep>
-         </mainProcedure>
-         <closeRqmts>
+         </mainProcedure><closeRqmts>
             <reqCondGroup>
                <noConds/>
             </reqCondGroup>
