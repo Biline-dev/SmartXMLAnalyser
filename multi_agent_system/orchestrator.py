@@ -93,7 +93,6 @@ def orchestrator_llm(status, suggestions, instructions, xml_file_path, xpath, ha
 if __name__ == "__main__":
     xml_file_path = "data/TC1_additions_1/base_documents/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML"
     instructions = "data/TC1_additions_1/instructions/"
-   # instructions = extract_instructions_from_file(instructions_file_path)
 
     should_continue = True
     has_been_modified = False
