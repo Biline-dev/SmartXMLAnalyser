@@ -711,7 +711,6 @@ if __name__ == "__main__":
     main(xml_file_path, instructions_directory, output_directory, expected_result, model_name)
 
 def agent_modifier (xml_file_path, instructions_directory):
-    print("agent_modifier===============>")
     output_directory = "corrected_files/"
     model_name = 'sonnet'
     expected_result = 'data/TC1_additions_1/expected_result/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML'

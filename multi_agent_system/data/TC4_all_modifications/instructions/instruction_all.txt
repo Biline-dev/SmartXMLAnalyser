@@ -1,0 +1,65 @@
+Instruction 1: In the main procedure, update the first step’s text. Change the text from
+"Apply grease (…)"
+to
+"Apply a generous amount of grease (…)"
+
+Instruction 2: In the main procedure, update the final step’s text regarding the fork installation. Change the text from
+"Install the fork (…)"
+to
+"Carefully install the fork (…) ensuring proper alignment."
+
+Instruction 3: In the references section, locate and remove the duplicate Data Module with the DM ID "S1000DBIKE-AAA-DA2-10-00-00AA-720A-A".
+
+Instruction 4: In the main procedure, immediately after the step titled "Install the headset, refer to: …" (step 2) and before the step that begins "To install the spacers, refer to: …" (step 3), insert a new procedural step. This step should instruct users:
+
+"Verify that all cleaning equipment is operational before starting the process. See DM: Cleaning Equipment Verification."
+
+This new step must reference the cleaning equipment verification data module with the following DM code details:
+
+ModelIdentCode: S1000DBIKE
+
+SystemDiffCode: AAA
+
+SystemCode: DA2
+
+SubSystemCode: 3
+
+SubSubSystemCode: 0
+
+AssyCode: 00
+
+DisassyCode: 00
+
+DisassyCodeVariant: AA
+
+InfoCode: 720
+
+InfoCodeVariant: A
+
+ItemLocationCode: A
+
+Instruction 5: In the closing requirements section, locate the group of required conditions. Add a new condition group entry that specifies an additional condition linked to a data module. The data module reference must use the following DM code details:
+
+ModelIdentCode: S1000DBIKE
+
+SystemDiffCode: AAA
+
+SystemCode: DA2
+
+SubSystemCode: 1
+
+SubSubSystemCode: 0
+
+AssyCode: 00
+
+DisassyCode: 00
+
+DisassyCodeVariant: AA
+
+InfoCode: 720
+
+InfoCodeVariant: A
+
+ItemLocationCode: A
+
+

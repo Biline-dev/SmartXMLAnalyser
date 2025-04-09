@@ -1,0 +1,4 @@
+In the main procedure, update the first step’s text. Change the text from
+"Apply grease (…)"
+to
+"Apply a generous amount of grease (…)"
