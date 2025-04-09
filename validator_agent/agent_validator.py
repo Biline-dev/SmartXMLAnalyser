@@ -5,4 +5,5 @@ def handle_message(message: dict) -> dict:
     if not xml_path:
         return {"status": "error", "message": "Missing 'xml_path' in message"}
     
-    return run_validator_agent(xml_path)
+    status, suggestions = run_validator_agent(xml_path)
+    return status, suggestions

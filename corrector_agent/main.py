@@ -1,5 +1,14 @@
 from agent_corrector import handle_xml_correction
 
+
+def corrector_agent(xml_file, instruction):
+    xpath = ["/dmodule/identAndStatusSection/dmAddress/dmIdent/dmCode"]
+    result = handle_xml_correction(xml_file=xml_file, instruction=instruction, xpath=xpath)
+    if result["status"] == "success":
+        print(result["message"])
+    else:
+        print(f"Échec: {result['message']}")
+
 if __name__ == "__main__":
     xml_file = "data/TC1_additions_1/base_documents/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML"
     instruction = """
@@ -25,9 +34,4 @@ if __name__ == "__main__":
                     infoCodeVariant="A"
                     itemLocationCode="A" />
             ```"""
-    xpath = ["/dmodule/identAndStatusSection/dmAddress/dmIdent/dmCode"]
-    result = handle_xml_correction(xml_file=xml_file, instruction=instruction, xpath=xpath)
-    if result["status"] == "success":
-        print(result["message"])
-    else:
-        print(f"Échec: {result['message']}")
+    corrector_agent(xml_file, instruction)

@@ -86,3 +86,16 @@ def extract_instance_and_path(error_msg: str) -> (str, str):
     instance = instance_match.group(1) if instance_match else "N/A"
 
     return instance, path
+
+
+def extract_instructions_from_file(file_path: str) -> str:
+    try:
+        with open(file_path, 'r') as file:
+            instructions = file.readlines()
+        
+        instructions = [line.strip() for line in instructions if line.strip()]
+        instructions_text = "\n".join(instructions)
+        
+        return instructions_text
+    except Exception as e:
+        return f"Erreur lors de la lecture du fichier : {str(e)}"

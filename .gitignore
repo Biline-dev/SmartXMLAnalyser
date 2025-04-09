@@ -9,3 +9,4 @@ __pycache__/
 validator_agent.env
 validator.py
 /validator.ipynb
+env
