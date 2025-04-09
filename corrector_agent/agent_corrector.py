@@ -1,10 +1,9 @@
 import os
 from connectors.cortex_llm import correct_with_llm
-from lxml.etree import _ElementTree
 from lxml import etree
 
 from dotenv import load_dotenv  
-from typing import Optional
+
 load_dotenv()
 
 def handle_xml_correction(xml_file: str, instruction: str = None, xpath: str = None) -> dict:
