@@ -106,9 +106,9 @@ Output :
 
 We also return a list of error paths.
 
-**Why adding a corrector is important?**
+#### Why adding a corrector is important?
 
-Keeping validation role and corrector role separate help:
+It allows to keep the validation role and corrector role separate help:
 
 * Makes the system easier to debug, test, and maintain.
 
