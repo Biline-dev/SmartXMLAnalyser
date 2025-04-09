@@ -84,7 +84,7 @@ The orchestrator checks the reliability of the input using guardrails. If the in
 
 ### Scenario 1: With Validator Agent
 
-If the XML file is syntactically correct, it goes through the validator agent, which checks if it conforms to the s1000d XML standards.
+If the XML file is syntactically correct, it goes through the validator agent, which checks if it conforms to the s1000d XML standards.The validation agent searches for the XSD schema that corresponds to the XML file sent by the user.
 If the file is valid, it is sent directly to the orchestrator.
 Otherwise, the validator returns a list of errors to the LLM, which generates a report with instructions to correct the document and sends it to the orchestrator.
 
