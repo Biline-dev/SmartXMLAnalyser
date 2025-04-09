@@ -1,0 +1,1 @@
+In the document’s status section, delete the "caveat" attribute from the security element to simplify the classification information.

@@ -24,7 +24,8 @@ def handle_xml_correction(xml_file: str, instruction: str = None, xpath: list = 
         
     try:
         # Génération du nom du fichier de sortie
-        tree = etree.parse(xml_file)
+        parser = etree.XMLParser(load_dtd=False, no_network=True, resolve_entities=False, recover=True)
+        tree = etree.parse(xml_file, parser)
         output_filename = f"corrected_files/{os.path.basename(xml_file)}"
         os.makedirs(os.path.dirname(output_filename), exist_ok=True)
         

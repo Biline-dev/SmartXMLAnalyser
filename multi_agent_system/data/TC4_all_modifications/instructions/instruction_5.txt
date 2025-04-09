@@ -1,0 +1,24 @@
+In the closing requirements section, locate the group of required conditions. Add a new condition group entry that specifies an additional condition linked to a data module. The data module reference must use the following DM code details:
+
+ModelIdentCode: S1000DBIKE
+
+SystemDiffCode: AAA
+
+SystemCode: DA2
+
+SubSystemCode: 1
+
+SubSubSystemCode: 0
+
+AssyCode: 00
+
+DisassyCode: 00
+
+DisassyCodeVariant: AA
+
+InfoCode: 720
+
+InfoCodeVariant: A
+
+ItemLocationCode: A
+

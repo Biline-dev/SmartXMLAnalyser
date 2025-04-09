@@ -1,0 +1,1 @@
+In the main procedure, immediately after the first step, add a new caution that instructs users to ensure all safety guards are in place before proceeding.

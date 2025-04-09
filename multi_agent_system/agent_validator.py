@@ -8,7 +8,6 @@ from lxml import etree
 def run_validator_agent(xml_path: str):
     filename = os.path.basename(xml_path)  # Assuming the filename is the last part of the path
     parser = etree.XMLParser(recover=True)
-    
     try:
         tree = etree.parse(xml_path, parser)
         tree.write(xml_path, pretty_print=True, encoding="utf-8", xml_declaration=True)
@@ -17,7 +16,7 @@ def run_validator_agent(xml_path: str):
         error_msg = str(syntax_err)
         print(f"Erreur de syntaxe XML: {error_msg}")
         insert_error_to_snowflake(filename, "invalid", error_msg, "/", "/", "Erreur de syntaxe critique")
-        return
+        return "invalid"
     except Exception as e:
         print(f"Erreur lors de l'analyse du fichier: {str(e)}")
         return
