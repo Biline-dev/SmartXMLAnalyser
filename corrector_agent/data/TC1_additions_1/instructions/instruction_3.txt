@@ -1,1 +1,0 @@
-As the second instruction within the "Pre-Operational Checks" chapter, add a substep with a description: "Ensure the hydraulic fluid is at the recommended level."
