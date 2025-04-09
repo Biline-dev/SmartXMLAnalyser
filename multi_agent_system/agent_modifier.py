@@ -628,6 +628,7 @@ def main(xml_file_path:str, instructions_directory:str, output_directory:str, ex
     
     # Get all instruction files from the directory and sort them
     instruction_files = [f for f in os.listdir(instructions_directory) if f.endswith('.txt')]
+
     instruction_files.sort()  # Sort to ensure consistent order
     
     # Create output directory if it doesn't exist
@@ -673,7 +674,7 @@ def main(xml_file_path:str, instructions_directory:str, output_directory:str, ex
             print(f"Warning: No results returned for instruction {instruction_file}")
     
     # Save the final result after all instructions have been applied
-    final_output_path = os.path.join(output_directory, "DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.xml")
+    final_output_path = os.path.join(output_directory, os.path.basename(xml_file_path))
     with open(final_output_path, 'w', encoding='utf-8') as file:
         file.write(current_xml)
     
@@ -713,7 +714,7 @@ if __name__ == "__main__":
 def agent_modifier (xml_file_path, instructions_directory):
     output_directory = "corrected_files/"
     model_name = 'sonnet'
-    expected_result = 'data/TC1_additions_1/expected_result/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML'
+    expected_result = 'testing_cases/TC1_additions_1/expected_result/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML'
 
     main(xml_file_path, instructions_directory, output_directory, expected_result, model_name)
     return expected_result
