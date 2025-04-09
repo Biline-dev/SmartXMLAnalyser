@@ -65,11 +65,68 @@ If the XML file is syntactically correct, it goes through the validator agent, w
 If the file is valid, it is sent directly to the orchestrator.
 Otherwise, the validator returns a list of errors to the LLM, which generates a report with instructions to correct the document and sends it to the orchestrator.
 
+Example Avec `mistra-large`: 
+
+```python
+
+prompt = f"XML validation error: {cleaned_error}"
+
+    sql = """
+    SELECT SNOWFLAKE.cortex.COMPLETE(
+        'mistral-large',
+        CONCAT('You are an expert in XML schema validation. Give instruction to correct each error in the xml code: ', 
+               '{}', 
+               '\\n\\nPlease explain: 1) What is causing this error,  2) How to fix it, 3) Example of correct XML structure')
+    )
+    """.format(prompt)
+               
+```
+
+Output : 
+```
+1) The error is caused by missing required attributes in the XML instance and an incorrect attribute name. The XML schema defines a complex type "dmCodeElemType" with several required attributes such as 'subSubSystemCode', 'assyCode', 'disassyCode', 'disassyCodeVariant', but these attributes are missing in the XML instance. Additionally, there is an incorrect attribute 'subSubSriant' in the XML instance, but the schema defines 'subSubSystemCode'.
+
+2) To fix the error, you need to add the missing required attributes to the XML instance and correct the incorrect attribute name. Make sure that the attribute names in the XML instance match the attribute names defined in the XML schema.
+
+3) Here is an example of the correct XML structure:
+
+```xml
+<dmCode modelIdentCode="BRAKE"
+        systemDiffCode="AAA"
+        systemCode="DA1"
+        subSystemCode="0"
+        subSubSystemCode="AA"
+        assyCode="ABC"
+        disassyCode="DEF"
+        disassyCodeVariant="GHI"
+        infoCode="341"
+        infoCodeVariant="A"
+        it
+```
+
+We also return a list of error paths.
+
+**Why adding a corrector is important?**
+
+Keeping validation role and corrector role separate help:
+
+* Makes the system easier to debug, test, and maintain.
+
+* Keeps each agent focused and specialized.
+
 ### Scenario 2: With Corrector Agent
 
-The orchestrator decides to send the report coming from the validator to the corrector The orchestrator sends the report from the validator to the corrector agent, which applies the necessary corrections based on the provided instructions and returns the corrected file to the orchestrator. The orchestrator then sends the file back to the validator. This cycle continues until the file is clean, a human intervenes, or a predefined threshold is reached.
+The orchestrator decides to send the report coming from the validator to the corrector The orchestrator sends the report from the validator to the corrector agent, which applies the necessary corrections based on the provided instructions and returns the corrected file to the orchestrator (a prompt chaining process) . The orchestrator then sends the file back to the validator. This cycle continues until the file is clean, a human intervenes, or a predefined threshold is reached.
 
 The corrector receives a report with a clear error paths, allowing it to focus only on the necessary XML fragment without parsing the entire file. 
+
+Example of the fragment:
+```
+<identAndStatusSection>
+      <dmAddress>
+         <dmIdent>
+            <dmCode modelIdentCode="BRAKE" systemDiffCode="AAA" systemCode="DA1" subSystemCode="0" subSubSystemCode="AA" assyCode="ABC" disassyCode="DEF" disassyCodeVariant="GHI" infoCode="341" infoCodeVariant="A" itemLocationCode="A"/><language countryIsoCode="US" languageIsoCode="en"/>
+```
 
 ### Scenario 3: With Modifier Agent
 
