@@ -1,0 +1,1 @@
+Finally, as the third instruction within the "Pre-Operational Checks" chapter, add a substep with a description: "Verify that all mounting bolts are properly secured."

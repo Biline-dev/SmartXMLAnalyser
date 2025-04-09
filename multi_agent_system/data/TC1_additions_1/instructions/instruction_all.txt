@@ -1,0 +1,7 @@
+Instruction 1: At the very beginning of the main procedure, add a new step that acts as a chapter header. This step should include a title with the text "Pre-Operational Checks."
+
+Instruction 2: As the first instruction within the "Pre-Operational Checks" chapter, add a substep with a description: "Inspect the brake lever for signs of wear or corrosion."
+
+Instruction 3: As the second instruction within the "Pre-Operational Checks" chapter, add a substep with a description: "Ensure the hydraulic fluid is at the recommended level."
+
+Instruction 4: Finally, as the third instruction within the "Pre-Operational Checks" chapter, add a substep with a description: "Verify that all mounting bolts are properly secured."
