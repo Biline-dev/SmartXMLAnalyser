@@ -17,10 +17,10 @@ def corrector_agent(xml_file, instruction):
         print(result["message"])
     else:
         print(f"Échec: {result['message']}")
-
+"""
 if __name__ == "__main__":
     xml_file = "data/TC1_additions_1/base_documents/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML"
-    instruction = """
+    instruction =
 
     🔧 LLM Suggestion:
 
@@ -42,9 +42,11 @@ if __name__ == "__main__":
                     infoCode="341"
                     infoCodeVariant="A"
                     itemLocationCode="A" />
-            ```"""
+            ```
     corrector_agent(xml_file, instruction)
 """
+
+
 if __name__ == "__main__":
     xml_file = "data/TC1_additions_1/base_documents/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML"
-    agent_validator(xml_file)"""
+    agent_validator(xml_file)

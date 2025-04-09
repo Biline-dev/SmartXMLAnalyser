@@ -20,9 +20,11 @@ def extract_schema_locations(tree: _ElementTree) -> list:
 def get_schema_path(schema_location: str, base_path: str) -> str:
     """Resolve the schema location to a file path or URL."""
     # If schema_location is an absolute URL, return it
+  
     if schema_location.startswith("http://") or schema_location.startswith("https://"):
         return schema_location
     
+    print(f"Schema location: {schema_location}")
     # If it's a relative file path, resolve it based on the base path of the XML file
     schema_file_path = os.path.join(os.path.dirname(base_path), schema_location)
     
