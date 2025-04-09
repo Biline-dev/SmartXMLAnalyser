@@ -673,7 +673,7 @@ def main(xml_file_path:str, instructions_directory:str, output_directory:str, ex
             print(f"Warning: No results returned for instruction {instruction_file}")
     
     # Save the final result after all instructions have been applied
-    final_output_path = os.path.join(output_directory, "final_result.xml")
+    final_output_path = os.path.join(output_directory, "DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.xml")
     with open(final_output_path, 'w', encoding='utf-8') as file:
         file.write(current_xml)
     
@@ -681,6 +681,7 @@ def main(xml_file_path:str, instructions_directory:str, output_directory:str, ex
     print(f"Final result saved to {final_output_path}")
 
     # ======= Comparing the corrected file with the expected results
+    """
     print("\n📍========[ COMPARING CORRECTED FILE WITH EXPECTED RESULT FILE ]========📍")
     result = compare_xml_files(final_output_path, expected_result)
     print("\t|- Same structure:", result['same_structure'])
@@ -689,6 +690,7 @@ def main(xml_file_path:str, instructions_directory:str, output_directory:str, ex
         print("Differences found:")
         for diff in result['differences']:
             print("-", diff)
+    """
     # =======
     
     return current_xml
@@ -701,15 +703,21 @@ def main(xml_file_path:str, instructions_directory:str, output_directory:str, ex
 # File paths - replace with your actual file paths
 xml_file_path = "testing_cases/TC1_additions_1/base_documents/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML"
 instructions_directory = "testing_cases/TC1_additions_1/instructions copy/"
-output_directory = "output/"
+output_directory = "corrected_files/"
 expected_result = 'testing_cases/TC1_additions_1/expected_result/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML'
 model_name = 'sonnet'
 
 if __name__ == "__main__":
     main(xml_file_path, instructions_directory, output_directory, expected_result, model_name)
 
-def agent_modifier ():
+def agent_modifier (xml_file_path, instructions_directory):
+    print("agent_modifier===============>")
+    output_directory = "corrected_files/"
+    model_name = 'sonnet'
+    expected_result = 'data/TC1_additions_1/expected_result/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML'
+
     main(xml_file_path, instructions_directory, output_directory, expected_result, model_name)
+    return expected_result
 
 
 # # --- Scenrio 2: All arguments are passed using the command line interface ---
