@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def handle_xml_correction(xml_file: str, instruction: str = None, xpath: str = None) -> dict:
+def handle_xml_correction(xml_file: str, instruction: str = None, xpath: list = None) -> dict:
     """
     Corrige un fichier XML en utilisant un modèle de langage et enregistre le résultat.
     
@@ -25,7 +25,7 @@ def handle_xml_correction(xml_file: str, instruction: str = None, xpath: str = N
     try:
         # Génération du nom du fichier de sortie
         tree = etree.parse(xml_file)
-        output_filename = f"corrected_files/corrected_{os.path.basename(xml_file)}"
+        output_filename = f"corrected_files/{os.path.basename(xml_file)}"
         os.makedirs(os.path.dirname(output_filename), exist_ok=True)
         
         # Correction du XML avec le modèle de langage
@@ -46,10 +46,11 @@ def handle_xml_correction(xml_file: str, instruction: str = None, xpath: str = N
             "message": f"Erreur lors de la correction: {str(e)}"
         }
     
-def corrector_agent(xml_file, instruction):
-    xpath = ["/dmodule/identAndStatusSection/dmAddress/dmIdent/dmCode"]
+def corrector_agent(xml_file, instruction, xpath):
+    #xpath = ["/dmodule/identAndStatusSection/dmAddress/dmIdent/dmCode"]
     result = handle_xml_correction(xml_file=xml_file, instruction=instruction, xpath=xpath)
     if result["status"] == "success":
         print(result["message"])
+        return result['output_path']
     else:
         print(f"Échec: {result['message']}")

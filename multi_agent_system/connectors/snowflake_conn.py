@@ -29,7 +29,7 @@ def insert_error_to_snowflake(filename, validity, error_msg, instance, path, llm
         # Commit the transaction
         conn.commit()
 
-        print("✅ Error logged into Snowflake.")
+        #print("✅ Error logged into Snowflake.")
     except Exception as e:
         print(f"Error inserting into Snowflake: {e}")
     finally:

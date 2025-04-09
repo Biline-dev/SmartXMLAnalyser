@@ -7,16 +7,18 @@ from agent_modifier import agent_modifier
 
 
 
-def call_corrector_agent(xml_file_path, suggestion):
+def call_corrector_agent(xml_file_path, suggestion, xpath):
     print("🛠️ Appel à l'agent correcteur")
-    corrector_agent(xml_file_path, suggestion)
+    xml_file_correct_path = corrector_agent(xml_file_path, suggestion, xpath)
+    return xml_file_correct_path
+
 
 def call_modifier_agent(instructions, xml_file_path):
     print("📝 Appel à l'agent modificateur")
     agent_modifier()
     return xml_file_path
 
-def orchestrator_llm(status, suggestions, instructions, xml_file_path):
+def orchestrator_llm(status, suggestions, instructions, xml_file_path, xpath):
     
     # Nettoyage des entrées
     status_clean = status.replace("'", "''").replace("\n", " ").replace("\r", " ") if status else ""
@@ -64,7 +66,8 @@ def orchestrator_llm(status, suggestions, instructions, xml_file_path):
                 return call_modifier_agent(instructions, xml_file_path)
             elif "correction" in str(decision):
                 print("❌ L'agent orchestrateur décide d'appeler l'agent correcteur.")
-                return call_corrector_agent(xml_file_path, suggestions)
+                xml_file_correct__path =  call_corrector_agent(xml_file_path, suggestions, xpath)
+                return xml_file_correct__path
             else:
                 raise ValueError(f"Décision inattendue de Mistral : {decision}")
         else:
@@ -82,6 +85,7 @@ def orchestrator_llm(status, suggestions, instructions, xml_file_path):
         if 'conn' in locals() and conn:
             conn.close()
 
+
 if __name__ == "__main__":
     xml_file_path = "data/TC1_additions_1/base_documents/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML"
     instructions_file_path = "data/TC1_additions_1/instructions/instruction_all.txt"
@@ -92,17 +96,17 @@ if __name__ == "__main__":
 
     while not is_valid:
         print(f"🔍 Validation du fichier : {xml_file_path}")
-        status, suggestions = agent_validator(xml_file_path)
+        status, suggestions, xpath = agent_validator(xml_file_path)
 
         # L'agent orchestrateur prend la décision d'appeler l'agent correcteur ou modificateur via Mistral
-        xml_file_path = orchestrator_llm(status, suggestions, instructions, xml_file_path)
-
+        xml_file_path = orchestrator_llm(status, suggestions, instructions, xml_file_path, xpath)
         # Re-validation après correction ou modification
-        status, suggestions = agent_validator(xml_file_path)
+        status, suggestions, xpath = agent_validator(xml_file_path)
         if status == 'valid':
             print("✅ Fichier XML final est valide !")
             is_valid = True
         else:
             print("🔁 Le fichier est toujours invalide, nouvelle itération...")
+
 
     print(f"✅ Fichier XML final est valide : {xml_file_path}")
