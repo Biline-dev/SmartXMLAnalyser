@@ -1,0 +1,2 @@
+At the very beginning of Chapter 2 ("Do an inspection of the installation of the brakes."), add a new note. This note should advise the operator to confirm that all brake mounting components are secure and the brake surface is clean before beginning the inspection. The note should read:
+"Prior to beginning the brake installation inspection, ensure that all brake mounting components are secure and that the brake surface is free of contaminants for an accurate evaluation of the hydraulic system function and pad clearance."
