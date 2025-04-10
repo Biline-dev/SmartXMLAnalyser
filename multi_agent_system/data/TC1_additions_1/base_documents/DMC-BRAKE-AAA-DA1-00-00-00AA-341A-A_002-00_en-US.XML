@@ -1,11 +1,18 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE dmodule>
-<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dc="http://www.purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_4-2/xml_schema_flat/proced.xsd">
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE dmodule >
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:dc="http://www.purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_4-2/xml_schema_flat/proced.xsd">
 
    <identAndStatusSection>
       <dmAddress>
          <dmIdent>
-            <dmCode modelIdentCode="BRAKE" systemDiffCode="AAA" systemCode="DA1" subSystemCode="0" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="341" infoCodeVariant="A" itemLocationCode="A"/>
+            <dmCode modelIdentCode="BRAKE" systemDiffCode="AAA" systemCode="DA1" subSystemCode="0"
+                    subSubSystemCode="0"
+                    infoCode="341"
+                    infoCodeVariant="A"
+                    itemLocationCode="A"/>
             <language countryIsoCode="US" languageIsoCode="en"/>
             <issueInfo issueNumber="002" inWork="00"/>
          </dmIdent>
@@ -88,14 +95,23 @@
          <applicCrossRefTableRef>
             <dmRef>
                <dmRefIdent>
-                  <dmCode modelIdentCode="BRAKE" systemDiffCode="AAA" systemCode="D00" subSystemCode="0" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="00W" infoCodeVariant="A" itemLocationCode="D"/>
+                  <dmCode modelIdentCode="BRAKE" systemDiffCode="AAA" systemCode="D00" subSystemCode="0"
+                          subSubSystemCode="0"
+                          assyCode="00"
+                          disassyCode="00"
+                          disassyCodeVariant="AA"
+                          infoCode="00W"
+                          infoCodeVariant="A"
+                          itemLocationCode="D"/>
                </dmRefIdent>
             </dmRef>
          </applicCrossRefTableRef>
          <applic>
             <evaluate andOr="and">
-               <assert applicPropertyIdent="SerialNo" applicPropertyType="prodattr" applicPropertyValues="0111"/>
-               <assert applicPropertyIdent="model" applicPropertyType="prodattr" applicPropertyValues="SS-11"/>
+               <assert applicPropertyIdent="SerialNo" applicPropertyType="prodattr"
+                       applicPropertyValues="0111"/>
+               <assert applicPropertyIdent="model" applicPropertyType="prodattr"
+                       applicPropertyValues="SS-11"/>
             </evaluate>
          </applic>
          <techStandard>
@@ -109,7 +125,15 @@
          <brexDmRef>
             <dmRef>
                <dmRefIdent>
-                  <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="D00" subSystemCode="0" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
+                  <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="D00"
+                          subSystemCode="0"
+                          subSubSystemCode="0"
+                          assyCode="00"
+                          disassyCode="00"
+                          disassyCodeVariant="AA"
+                          infoCode="022"
+                          infoCodeVariant="A"
+                          itemLocationCode="D"/>
                </dmRefIdent>
             </dmRef>
          </brexDmRef>
@@ -175,7 +199,8 @@
             <proceduralStep>
                <para>Make sure that the wheels lock and the bicycle stops.</para>
             </proceduralStep>
-         </mainProcedure><closeRqmts>
+         </mainProcedure>
+         <closeRqmts>
             <reqCondGroup>
                <noConds/>
             </reqCondGroup>
