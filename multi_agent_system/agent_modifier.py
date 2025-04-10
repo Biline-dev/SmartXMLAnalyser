@@ -618,6 +618,29 @@ def compare_xml_files(file1_path, file2_path, ignore_order=True):
 
 ###=========
 
+prompt = """
+At the very beginning of the main procedure, add a new step that acts as a chapter header. This step should include a title with the text 'Pre-Operational Checks.
+
+As the first instruction within the 'Pre-Operational Checks' chapter, add a substep with a description: 'Inspect the brake lever for signs of wear or corrosion.
+
+As the second instruction within the 'Pre-Operational Checks' chapter, add a substep with a description: 'Ensure the hydraulic fluid is at the recommended level.
+
+Finally, as the third instruction within the 'Pre-Operational Checks' chapter, add a substep with a description: 'Verify that all mounting bolts are properly secured.
+"""
+
+def extract_instructions_from_prompt(prompt: str) -> list[str]:
+    # Split en fonction des sauts de ligne doubles ou simples
+    raw_instructions = [line.strip() for line in prompt.split('\n') if line.strip()]
+    
+    # S'assurer que chaque instruction se termine par un point
+    instructions = []
+    for instr in raw_instructions:
+        if not instr.endswith('.'):
+            instr += '.'
+        instructions.append(instr)
+        
+    return instructions
+
 def main(xml_file_path:str, instructions_directory:str, output_directory:str, expected_result:str, model_name="sonnet"):
 
     # Read initial XML file
@@ -627,9 +650,7 @@ def main(xml_file_path:str, instructions_directory:str, output_directory:str, ex
         return
     
     # Get all instruction files from the directory and sort them
-    instruction_files = [f for f in os.listdir(instructions_directory) if f.endswith('.txt')]
-
-    instruction_files.sort()  # Sort to ensure consistent order
+    instruction_files = extract_instructions_from_prompt(prompt)
     
     # Create output directory if it doesn't exist
     os.makedirs(output_directory, exist_ok=True)
@@ -641,9 +662,7 @@ def main(xml_file_path:str, instructions_directory:str, output_directory:str, ex
     
     # Process each instruction sequentially
     for i, instruction_file in enumerate(instruction_files):
-        instruction_path = os.path.join(instructions_directory, instruction_file)
-        instruction_content = read_file(instruction_path)
-        
+        instruction_content = instruction_files[i]
         if not instruction_content:
             print(f"Error: Could not read instruction file {instruction_file}. Skipping.")
             continue
