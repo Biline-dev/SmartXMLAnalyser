@@ -5,8 +5,7 @@
    <identAndStatusSection>
       <dmAddress>
          <dmIdent>
-            <dmCode modelIdentCode="BRAKE" systemDiffCode="AAA" systemCode="DA1" subSystemCode="0" subSubSriant="AA" infoCode="341" infoCodeVariant="A" itemLocationCode="A"/>
-            <language countryIsoCode="US" languageIsoCode="en"/>
+            <dmCode modelIdentCode="BRAKE" systemDiffCode="AAA" systemCode="DA1" subSystemCode="0" subSubSystemCode="A" assyCode="AA" disassyCode="AA" disassyCodeVariant="A" infoCode="341" infoCodeVariant="A" itemLocationCode="A"/><language countryIsoCode="US" languageIsoCode="en"/>
             <issueInfo issueNumber="002" inWork="00"/>
          </dmIdent>
          <dmAddressItems>
@@ -18,23 +17,18 @@
          </dmAddressItems>
       </dmAddress>
       <dmStatus issueType="new">
-         <security securityClassification="01" commercialClassification="cc51" caveat="cv51"/>/
+         <security securityClassification="01" commercialClassification="cc51" caveat="cv51"/>
          <dataRestrictions>
             <restrictionInstructions>
                <dataDistribution>To be made available to all S1000D users.</dataDistribution>
                <exportControl>
                   <exportRegistrationStmt>
-                     <simplePara>Export of this data module to all countries that are the residence of
-                    organizations that are users of S1000D is permitted. Storage of this data module
-                    is to be at the discretion of the organization.</simplePara>
+                     <simplePara>Export of this data module to all countries that are the residence of organizations that are users of S1000D is permitted. Storage of this data module is to be at the discretion of the organization.</simplePara>
                   </exportRegistrationStmt>
                </exportControl>
-               <dataHandling>There are no specific handling instructions for this data
-            module.</dataHandling>
-               <dataDestruction>Users may destroy this data module in accordance with their own local
-            procedures.</dataDestruction>
-               <dataDisclosure>There are no dissemination limitations that apply to this data
-            module.</dataDisclosure>
+               <dataHandling>There are no specific handling instructions for this data module.</dataHandling>
+               <dataDestruction>Users may destroy this data module in accordance with their own local procedures.</dataDestruction>
+               <dataDisclosure>There are no dissemination limitations that apply to this data module.</dataDisclosure>
             </restrictionInstructions>
             <restrictionInfo>
                <copyright>
@@ -54,29 +48,19 @@
                   <copyrightPara>
                      <randomList>
                         <listItem>
-                           <para>This material is provided "As is" and neither ASD nor any person who
-                            has contributed to the creation, revision or maintenance of the material
-                            makes any representations or warranties, express or implied, including
-                            but not limited to, warranties of merchantability or fitness for any
-                            particular purpose.</para>
+                           <para>This material is provided "As is" and neither ASD nor any person who has contributed to the creation, revision or maintenance of the material makes any representations or warranties, express or implied, including but not limited to, warranties of merchantability or fitness for any particular purpose.</para>
                         </listItem>
                         <listItem>
-                           <para>Neither ASD nor any person who has contributed to the creation,
-                            revision or maintenance of this material shall be liable for any direct,
-                            indirect, special or consequential damages or any other liability
-                            arising from any use of this material.</para>
+                           <para>Neither ASD nor any person who has contributed to the creation, revision or maintenance of this material shall be liable for any direct, indirect, special or consequential damages or any other liability arising from any use of this material.</para>
                         </listItem>
                         <listItem>
-                           <para>Revisions to this document may occur after its issuance. The user is
-                            responsible for determining if revisions to the material contained in
-                            this document have occurred and are applicable.</para>
+                           <para>Revisions to this document may occur after its issuance. The user is responsible for determining if revisions to the material contained in this document have occurred and are applicable.</para>
                         </listItem>
                      </randomList>
                   </copyrightPara>
                </copyright>
                <policyStatement>S1000D-SC-2016-017-002-00 Steering Committee TOR</policyStatement>
-               <dataConds>There are no known conditions that would change the data restrictions for, or
-            security classification of, this data module.</dataConds>
+               <dataConds>There are no known conditions that would change the data restrictions for, or security classification of, this data module.</dataConds>
             </restrictionInfo>
          </dataRestrictions>
          <responsiblePartnerCompany enterpriseCode="B6865">
@@ -121,9 +105,7 @@
          <reasonForUpdate id="rfu-general" updateReasonType="urt03">
             <simplePara>S1000D upissued</simplePara>
          </reasonForUpdate>
-
-      </dmStatus>
-   </identAndStatusSection>
+      </dmStatus></identAndStatusSection>
    <content>
       <procedure>
          <preliminaryRqmts>
@@ -152,6 +134,12 @@
          </preliminaryRqmts>
          <mainProcedure>
             <proceduralStep>
+               <title>Pre-Operational Checks</title>
+               <proceduralStep>
+                  <para>Inspect the brake lever for signs of wear or corrosion.</para>
+               </proceduralStep>
+            </proceduralStep>
+            <proceduralStep>
                <para>Put the bicycle in a vertical position.</para>
             </proceduralStep>
             <proceduralStep>
@@ -163,8 +151,7 @@
             <proceduralStep>
                <para>Make sure that the wheels lock and the bicycle stops.</para>
             </proceduralStep>
-         </mainProcedure>
-         <closeRqmts>
+         </mainProcedure><closeRqmts>
             <reqCondGroup>
                <noConds/>
             </reqCondGroup>

@@ -62,11 +62,11 @@ def correct_with_llm(tree: _ElementTree, instruction: str, xpaths: list) -> str:
         
         sql = """
         SELECT SNOWFLAKE.cortex.COMPLETE(
-            'mistral-large',
+            'claude-3-5-sonnet',
             CONCAT('You are an expert in XML schema correction.  Based on the following instruction', 
                 'generate the corrected version of the given XML fragment.:',
                 '{}',
-                'return the corrected XML fragment (no explanations).\n\n')
+                'return only the corrected XML fragment (no explanations).\n\n')
         )
         """.format(prompt)
         

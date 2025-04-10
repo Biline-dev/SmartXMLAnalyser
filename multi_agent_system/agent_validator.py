@@ -28,7 +28,9 @@ def run_validator_agent(xml_path: str):
         return "valid", "", ""
     else:
         print("❌ XML is invalid. Analyzing...\n")
+        print(f"XML validation error: {error_msg}")
         explanation = explain_error_with_llm(error_msg)
+        
         #print("🔧 LLM Suggestion:\n")
         llm_suggestion = explanation  # The suggestion provided by LLM
         # Insert the error details into Snowflake
