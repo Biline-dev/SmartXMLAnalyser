@@ -139,108 +139,189 @@ def orchestrator_llm(status, suggestions, instructions, xml_file_path, xpath, ha
         if 'conn' in locals() and conn:
             conn.close()
 
+st.markdown("""
+    <style>
+    .title-style {
+        font-size: 4em;
+        font-weight: bold;
+        color: white;
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.15);
+        text-align: center;
+    }
+
+    .subtitle-style {
+        font-size: 1.3em;
+        color: white;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .collaptitle{
+        border:1px solid red        
+    }
+    .collapsible {
+        padding: 5px;
+        border-radius: 8px;
+        margin-top: 5px;
+    }
+    
+    /* Styles pour les onglets et boutons */
+    .stButton>button {
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 10px;
+        padding: 10px 24px;
+        transition: all 0.3s ease;
+    }
+    .stButton>button:hover {
+        background-color: #45a049;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    /* Style pour les zones de texte */
+    .stTextArea textarea {
+        border-radius: 8px;
+        border: 1px solid #ddd;
+    }
+    
+    /* Style pour les expanders */
+    .streamlit-expanderHeader {
+        font-weight: bold;
+        color: #2c3e50;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 
 def main():
-    st.title("XML File Processor")
-    st.subheader("Upload, Process, and Download XML Files")
+    st.markdown('<div class="title-style">Smart - XML</div>', unsafe_allow_html=True)
+    st.markdown('<div class="subtitle-style">Assistant intelligent de modification de documentation</div>', unsafe_allow_html=True)
 
-    # Exemple de prompt utilisé comme placeholder
+    # Exemple de prompt
     example_prompt = """
-At the very beginning of the main procedure, add a new step that acts as a chapter header. This step should include a title with the text 'Pre-Operational Checks.'
+    ✨ Exemples d'instructions pour modifier le document XML :
 
-As the first instruction within the 'Pre-Operational Checks' chapter, add a substep with a description: 'Inspect the brake lever for signs of wear or corrosion.'
+     ➕  Ajout : Add a step titled 'Final Safety Check' with: 'Ensure area is clean'.
 
-As the second instruction within the 'Pre-Operational Checks' chapter, add a substep with a description: 'Ensure the hydraulic fluid is at the recommended level.'
+     🔄  Modication : Replace 'Initial Setup' with 'System Initialization Procedure.'
 
-Finally, as the third instruction within the 'Pre-Operational Checks' chapter, add a substep with a description: 'Verify that all mounting bolts are properly secured.'
+     🗑️  Suppression : Remove the step titled 'Pressure Sensor Calibration.'
+
 """.strip()
 
-    # Onglets pour les instructions
-    tab1, tab2 = st.tabs(["Text Instructions", "Instruction File"])
+    with st.container():
+        st.markdown("#### 📝 Instructions")
+        tab1, tab2 = st.tabs(["✍️  Prompt   ", "   📁  Fichier d'instructions"])
+        
+        log_placeholder = st.empty()
+        instructions_text = ""
+        instruction_file = None
 
-    log_placeholder = st.empty()
-    full_log = []
-    with tab1:
-        instructions_text = st.text_area(
-            "Enter your modification instructions",
-            height=200,
-            placeholder=example_prompt,
-            key="text_instructions_area"
-        )
+        with tab1:
+            st.info("Rédigez vos instructions pour modifier le document XML.")
+            instructions_text = st.text_area(
+                "Instructions",
+                height=180,
+                placeholder=example_prompt,
+                key="text_instructions_area"
+            )
 
-    with tab2:
-        instruction_file = st.file_uploader(
-            "Upload instruction file",
-            type=["txt"],
-            key="instruction_file_uploader"
-        )
+        with tab2:
+            st.info("Téléchargez un fichier texte contenant vos instructions.")
+            instruction_file = st.file_uploader(
+                "Uploader un fichier .txt",
+                type=["txt"],
+                key="instruction_file_uploader"
+            )
 
-    # Upload du fichier XML
+    st.markdown("---")
+    st.markdown("#### 📄 Fichier XML")
     xml_file = st.file_uploader(
-        "Upload XML file",
+        "Uploader un fichier XML",
         type=["xml", "XML"],
         key="xml_file_uploader"
     )
 
+    if xml_file:
+        st.success(f"Fichier chargé : {xml_file.name}")
+        with st.expander("Aperçu du contenu XML"):
+            xml_content = xml_file.getvalue().decode("utf-8")
+            st.code(xml_content[:500] + ("..." if len(xml_content) > 500 else ""), language="xml")
+
     # Récupération des instructions
     instructions = ""
-    if instructions_text.strip():  # Priorité au champ texte s'il est rempli
+    if instructions_text.strip():
         instructions = instructions_text.strip()
     elif instruction_file:
         instructions = instruction_file.getvalue().decode("utf-8").strip()
 
-    # Zone de prévisualisation des instructions (pour debug ou UX)
-    if instructions:
-        st.text_area("📄 Instructions Preview", value=instructions, height=150, disabled=True)
+    # Traitement - Bouton centré
+    st.markdown("---")
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        process_clicked = st.button("🚀  Lancer le traitement", key="process_button", use_container_width=True)
 
-    # Bouton de traitement
-    process_clicked = st.button("Process File", key="process_button")
-
-    if process_clicked and xml_file:
-        if not instructions:
-            st.error("Please provide instructions through text or file upload")
+    # Bouton d'affichage du guide
+    with st.expander("ℹ️ Comment ça marche ?"):
+        st.markdown("""
+        <div class="collapsible">
+        <ol>
+            <li><strong>Upload</strong> votre fichier XML</li>
+            <li><strong>Rédigez</strong> vos instructions de modification ou uploadez un fichier .txt</li>
+            <li><strong>Cliquez sur "Lancer le traitement"</strong> pour lancer la transformation</li>
+            <li><strong>Téléchargez</strong> votre fichier modifié !</li>
+        </ol>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    # Section pour les logs
+    st.markdown("#### 📊 Logs d'exécution")
+    log_container = st.container()
+    log_placeholder = log_container.empty()
+    
+    # Conteneur pour le statut
+    status_container = st.empty()
+    
+    if process_clicked:
+        if not xml_file:
+            st.warning("⚠️ Merci d'uploader un fichier XML")
+        elif not instructions:
+            st.error("❌ Veuillez fournir des instructions valides")
         else:
-            # Création d'un répertoire temporaire
-            with tempfile.TemporaryDirectory() as temp_dir:
-                temp_file_path = os.path.join(temp_dir, xml_file.name)
-                with open(temp_file_path, 'wb') as f:
-                    f.write(xml_file.getvalue())
+            with st.spinner("🔧 Traitement en cours..."):
+                try:
+                    with tempfile.TemporaryDirectory() as temp_dir:
+                        temp_file_path = os.path.join(temp_dir, xml_file.name)
+                        with open(temp_file_path, 'wb') as f:
+                            f.write(xml_file.getvalue())
 
-                # Traitement du fichier
-                with st.spinner("Processing file..."):
-                    try:
                         processed_file_path = process_file(temp_file_path, instructions, log_placeholder)
 
                         if os.path.exists(processed_file_path):
                             with open(processed_file_path, 'rb') as f:
                                 file_content = f.read()
 
-                            st.success("File processed successfully!")
-
-                            st.download_button(
-                                label="Download Processed File",
-                                data=file_content,
-                                file_name="processed_" + os.path.basename(processed_file_path),
-                                mime="application/xml",
-                                key="download_button"
-                            )
+                            success_message = st.success("✅ Fichier traité avec succès !")
+                            
+                            col1, col2, col3 = st.columns([1, 2, 1])
+                            with col2:
+                                st.download_button(
+                                    label="⬇️ Télécharger le fichier modifié",
+                                    data=file_content,
+                                    file_name="processed_" + os.path.basename(processed_file_path),
+                                    mime="application/xml",
+                                    key="download_button",
+                                    use_container_width=True
+                                )
+                            
+                            # Afficher un aperçu du résultat
+                            with st.expander("Aperçu du fichier modifié"):
+                                modified_content = file_content.decode("utf-8")
+                                st.code(modified_content[:500] + ("..." if len(modified_content) > 500 else ""), language="xml")
                         else:
-                            st.error(f"Could not find processed file at: {processed_file_path}")
-                    except Exception as e:
-                        st.error(f"Error during processing: {str(e)}")
+                            st.error("❌ Fichier modifié introuvable.")
+                except Exception as e:
+                    st.error(f"❌ Erreur lors du traitement : {str(e)}")
 
-    elif process_clicked and not xml_file:
-        st.warning("Please upload an XML file")
-
-    # Guide d'utilisation
-    st.markdown("---")
-    st.subheader("How to use this app")
-    st.markdown("""
-    1. Upload your XML file using the file uploader  
-    2. Enter instructions for modification either as text or via an instruction file  
-    3. Click 'Process File' to start the processing  
-    4. Once complete, download your processed file  
-    """)
 
 if __name__ == "__main__":
     main()
