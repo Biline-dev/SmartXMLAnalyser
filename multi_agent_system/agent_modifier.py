@@ -172,8 +172,6 @@ def extract_element_path_from_instruction(instruction, xml_str):
         # Use lxml instead of ElementTree for getpath functionality
         root = lxmlET.fromstring(xml_str.encode('utf-8'))
         tree = lxmlET.ElementTree(root)  # Create an ElementTree object
-
-        
         
         if not target_sections:
             # If no specific section mentioned, make a guess based on action
@@ -186,7 +184,6 @@ def extract_element_path_from_instruction(instruction, xml_str):
             if elements:
                 # Get the path to this element using the tree object
                 path = tree.getpath(elements[0])
-
                 return path
     except Exception as e:
         print(f"Error extracting path: {e}")
