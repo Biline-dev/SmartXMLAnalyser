@@ -14,13 +14,13 @@ def log_and_display(log_placeholder, full_log, message):
 
 
 def call_corrector_agent(xml_file_path, suggestion, xpath, log_placeholder, full_log):
-    log_and_display(log_placeholder, full_log, "🛠️ Appel à l'agent correcteur")
+    log_and_display(log_placeholder, full_log, " Appel à l'agent correcteur")
     xml_file_correct_path = corrector_agent(xml_file_path, suggestion, xpath)
     return xml_file_correct_path
 
 
 def call_modifier_agent(xml_file_path, instructions, log_placeholder, full_log):
-    log_and_display(log_placeholder, full_log, "📝 Appel à l'agent modificateur")
+    log_and_display(log_placeholder, full_log, " Appel à l'agent modificateur")
     agent_modifier(xml_file_path, instructions)
     return xml_file_path
 
@@ -66,14 +66,14 @@ def orchestrator_llm(status, suggestions, instructions, xml_file_path, xpath, ha
         if result and result[0]:
             response = result[0]
             decision = response.strip().lower().split()[0]
-            log_and_display(log_placeholder, full_log, f"🧠 Décision extraite de l'agent orchestrateur : {decision}")
+            log_and_display(log_placeholder, full_log, f" Décision extraite de l'agent orchestrateur : {decision}")
 
             if decision == "correction":
                 log_and_display(log_placeholder, full_log, "❌ Correction requise.")
                 xml_file_path = call_corrector_agent(xml_file_path, suggestions, xpath, log_placeholder, full_log)
             elif decision == "modification":
                 log_and_display(log_placeholder, full_log, "✅ Modification requise.")
-                log_and_display(log_placeholder, full_log, f"📜 Instructions : {instructions_clean}")
+                log_and_display(log_placeholder, full_log, f" Instructions : {instructions_clean}")
                 xml_file_path = call_modifier_agent(xml_file_path, instructions, log_placeholder, full_log)
             elif decision == "stop":
                 log_and_display(log_placeholder, full_log, "🛑 Le fichier est valide et a été modifié. Arrêt du pipeline.")
@@ -86,7 +86,7 @@ def orchestrator_llm(status, suggestions, instructions, xml_file_path, xpath, ha
 
     except Exception as e:
         import traceback
-        log_and_display(log_placeholder, full_log, f"🚨 Erreur lors de l'appel à Mistral : {e}")
+        log_and_display(log_placeholder, full_log, f" Erreur lors de l'appel à Mistral : {e}")
         log_and_display(log_placeholder, full_log, traceback.format_exc())
         raise RuntimeError(f"Échec de l'agent orchestrateur : {str(e)}")
 

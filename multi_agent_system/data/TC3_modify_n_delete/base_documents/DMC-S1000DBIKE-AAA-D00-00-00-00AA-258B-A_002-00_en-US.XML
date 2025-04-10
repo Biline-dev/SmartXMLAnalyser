@@ -1,16 +1,27 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE dmodule [
-<!NOTATION png PUBLIC "-//W3C//NOTATION Portable Network Graphics//EN" >
-<!NOTATION cgm PUBLIC "-//USA-DOD//NOTATION Computer Graphics Metafile//EN" >
-<!ENTITY ICN-S3627-S1000D0619-001-01 SYSTEM "ICN-S3627-S1000D0619-001-01.PNG" NDATA png>
-<!ENTITY ICN-C0419-S1000D0359-001-01 SYSTEM "ICN-C0419-S1000D0359-001-01.CGM" NDATA cgm>
-<!ENTITY ICN-C0419-S1000D0400-001-01 SYSTEM "ICN-C0419-S1000D0400-001-01.CGM" NDATA cgm>
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE dmodule  [
+  <!ENTITY ICN-S3627-S1000D0619-001-01 SYSTEM "ICN-S3627-S1000D0619-001-01.PNG" NDATA png >
+  <!ENTITY ICN-C0419-S1000D0359-001-01 SYSTEM "ICN-C0419-S1000D0359-001-01.CGM" NDATA cgm >
+  <!ENTITY ICN-C0419-S1000D0400-001-01 SYSTEM "ICN-C0419-S1000D0400-001-01.CGM" NDATA cgm >
+  <!NOTATION cgm PUBLIC "-//USA-DOD//NOTATION Computer Graphics Metafile//EN" >
+  <!NOTATION png PUBLIC "-//W3C//NOTATION Portable Network Graphics//EN" >
 ]>
-<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dc="http://www.purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_4-2/xml_schema_flat/proced.xsd">
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:dc="http://www.purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_4-2/xml_schema_flat/proced.xsd">
 	  <identAndStatusSection>
 		    <dmAddress>
 			      <dmIdent>
-				        <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="D00" subSystemCode="0" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="258" infoCodeVariant="B" itemLocationCode="A"/>
+				        <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="D00"
+                    subSystemCode="0"
+                    subSubSystemCode="0"
+                    assyCode="00"
+                    disassyCode="00"
+                    disassyCodeVariant="AA"
+                    infoCode="258"
+                    infoCodeVariant="B"
+                    itemLocationCode="A"/>
 				        <language countryIsoCode="US" languageIsoCode="en"/>
 				        <issueInfo issueNumber="002" inWork="00"/>
 			      </dmIdent>
@@ -23,7 +34,7 @@
 			      </dmAddressItems>
 		    </dmAddress>
 		    <dmStatus issueType="changed">
-			      <security securityClassification="01" commercialClassification="cc51" caveat="cv51"/>
+			      <security securityClassification="01" commercialClassification="cc51"/>
 			      <dataRestrictions>
             <restrictionInstructions>
                <dataDistribution>To be made available to all S1000D users.</dataDistribution>
@@ -96,7 +107,15 @@
 			      <applicCrossRefTableRef>
 				        <dmRef>
 					          <dmRefIdent>
-						            <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="D00" subSystemCode="0" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="00W" infoCodeVariant="A" itemLocationCode="D"/>
+						            <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="D00"
+                          subSystemCode="0"
+                          subSubSystemCode="0"
+                          assyCode="00"
+                          disassyCode="00"
+                          disassyCodeVariant="AA"
+                          infoCode="00W"
+                          infoCodeVariant="A"
+                          itemLocationCode="D"/>
 					          </dmRefIdent>
 				        </dmRef>
 			      </applicCrossRefTableRef>
@@ -105,15 +124,20 @@
 					          <simplePara>Mountain bicycle and (Mountain storm Mk1 or Brook trekker Mk9)</simplePara>
 				        </displayText>
 				        <evaluate andOr="and">
-					          <assert applicPropertyIdent="type" applicPropertyType="prodattr" applicPropertyValues="Mountain bicycle"/>
+					          <assert applicPropertyIdent="type" applicPropertyType="prodattr"
+                       applicPropertyValues="Mountain bicycle"/>
 					          <evaluate andOr="or">
 						            <evaluate andOr="and">
-							              <assert applicPropertyIdent="model" applicPropertyType="prodattr" applicPropertyValues="Mountain storm"/>
-							              <assert applicPropertyIdent="version" applicPropertyType="prodattr" applicPropertyValues="Mk1"/>
+							              <assert applicPropertyIdent="model" applicPropertyType="prodattr"
+                             applicPropertyValues="Mountain storm"/>
+							              <assert applicPropertyIdent="version" applicPropertyType="prodattr"
+                             applicPropertyValues="Mk1"/>
 						            </evaluate>
 						            <evaluate andOr="and">
-							              <assert applicPropertyIdent="model" applicPropertyType="prodattr" applicPropertyValues="Brook trekker"/>
-							              <assert applicPropertyIdent="version" applicPropertyType="prodattr" applicPropertyValues="Mk9"/>
+							              <assert applicPropertyIdent="model" applicPropertyType="prodattr"
+                             applicPropertyValues="Brook trekker"/>
+							              <assert applicPropertyIdent="version" applicPropertyType="prodattr"
+                             applicPropertyValues="Mk9"/>
 						            </evaluate>
 					          </evaluate>
 				        </evaluate>
@@ -129,7 +153,15 @@
 			      <brexDmRef>
             <dmRef>
                <dmRefIdent>
-                  <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="D00" subSystemCode="0" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
+                  <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="D00"
+                          subSystemCode="0"
+                          subSubSystemCode="0"
+                          assyCode="00"
+                          disassyCode="00"
+                          disassyCodeVariant="AA"
+                          infoCode="022"
+                          infoCodeVariant="A"
+                          itemLocationCode="D"/>
                </dmRefIdent>
             </dmRef>
          </brexDmRef>
@@ -151,7 +183,15 @@
       <refs>
          <dmRef>
             <dmRefIdent>
-               <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA4" subSystemCode="1" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="241" infoCodeVariant="A" itemLocationCode="A"/>
+               <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA4"
+                       subSystemCode="1"
+                       subSubSystemCode="0"
+                       assyCode="00"
+                       disassyCode="00"
+                       disassyCodeVariant="AA"
+                       infoCode="241"
+                       infoCodeVariant="A"
+                       itemLocationCode="A"/>
             </dmRefIdent>
          </dmRef>
          <pmRef>
@@ -176,9 +216,12 @@
 						         <simplePara>Mountain bicycle Brook trekker Mk9</simplePara>
 					       </displayText>
 					       <evaluate andOr="and">
-						         <assert applicPropertyIdent="type" applicPropertyType="prodattr" applicPropertyValues="Mountain bicycle"/>
-						         <assert applicPropertyIdent="model" applicPropertyType="prodattr" applicPropertyValues="Brook trekker"/>
-						         <assert applicPropertyIdent="version" applicPropertyType="prodattr" applicPropertyValues="Mk9"/>
+						         <assert applicPropertyIdent="type" applicPropertyType="prodattr"
+                       applicPropertyValues="Mountain bicycle"/>
+						         <assert applicPropertyIdent="model" applicPropertyType="prodattr"
+                       applicPropertyValues="Brook trekker"/>
+						         <assert applicPropertyIdent="version" applicPropertyType="prodattr"
+                       applicPropertyValues="Mk9"/>
 					       </evaluate>
 				     </applic>
 				     <applic id="app-0002">
@@ -186,9 +229,12 @@
 						         <simplePara>Mountain bicycle Mountain storm Mk1</simplePara>
 					       </displayText>
 					       <evaluate andOr="and">
-						         <assert applicPropertyIdent="type" applicPropertyType="prodattr" applicPropertyValues="Mountain bicycle"/>
-						         <assert applicPropertyIdent="model" applicPropertyType="prodattr" applicPropertyValues="Mountain storm"/>
-						         <assert applicPropertyIdent="version" applicPropertyType="prodattr" applicPropertyValues="Mk1"/>
+						         <assert applicPropertyIdent="type" applicPropertyType="prodattr"
+                       applicPropertyValues="Mountain bicycle"/>
+						         <assert applicPropertyIdent="model" applicPropertyType="prodattr"
+                       applicPropertyValues="Mountain storm"/>
+						         <assert applicPropertyIdent="version" applicPropertyType="prodattr"
+                       applicPropertyValues="Mk1"/>
 					       </evaluate>
 				     </applic>
 		    </referencedApplicGroup>
@@ -215,7 +261,7 @@
 				        <reqPersons applicRefId="app-0002">
 					          <person man="B">
 						            <personCategory personCategoryCode="Operator"/>
-						            <personSkill skillLevelCode="sk02"/>
+						            <personSkill skillLevelCode="sk03"/>
 						            <trade>Bike rider</trade>
 						            <estimatedTime unitOfMeasure="h">1,0</estimatedTime>
 					          </person>
@@ -299,8 +345,8 @@
 							              <reqQuantity unitOfMeasure="L">1</reqQuantity>
 						            </supplyDescr>
 						            <supplyDescr id="sup-0002">
-							              <name>ACME Middling Detergent 69</name>
-							              <shortName>Detergent A</shortName>
+							              <name>ACME Premium Detergent 69</name>
+							              <shortName>Premium Detergent.</shortName>
 							              <identNumber>
 								                <manufacturerCode>KZ666</manufacturerCode>
 								                <partAndSerialNumber>
@@ -309,7 +355,9 @@
 							              </identNumber>
 							              <reqQuantity unitOfMeasure="L">1</reqQuantity>
 						            </supplyDescr>
-						            <supplyDescr id="sup-0003" applicRefId="app-0001" reasonForUpdateRefIds="rfu-Detergent" changeMark="1" changeType="modify">
+						            <supplyDescr id="sup-0003" applicRefId="app-0001" reasonForUpdateRefIds="rfu-Detergent"
+                               changeMark="1"
+                               changeType="modify">
 							              <name>BoeBus DeLux Detergent No.6</name>
 							              <shortName>Detergent C</shortName>
 							              <identNumber>
@@ -347,7 +395,7 @@
 			      </preliminaryRqmts>
 			      <mainProcedure>
 				        <proceduralStep>
-					          <para>Clean the bicycle with water to remove all dirt. Refer to <internalRef internalRefId="fig-0001" internalRefTargetType="irtt01"/>.</para>
+					          <para>Clean the bicycle thoroughly with water to remove all visible dirt. Refer to <internalRef internalRefId="fig-0001" internalRefTargetType="irtt01"/>.</para>
 					          <figure id="fig-0001">
 						            <title>Cleaning the bike</title>
 						            <graphic infoEntityIdent="ICN-C0419-S1000D0359-001-01"/>
@@ -381,7 +429,7 @@
 				        <proceduralStep>
 					          <para>Flush the sprockets, the derailleurs, the chain rings and the chain with water.</para>
 					          <note>
-						            <notePara>If necessary, do the flush procedure again.</notePara>
+						            <notePara>Repeat the flush procedure if any detergent residue remains.</notePara>
 					          </note>
 				        </proceduralStep>
 					          <proceduralStep applicRefId="app-0002">
@@ -399,31 +447,18 @@
 							              <para>Move the bicycle up and down on its tires to remove all water.</para>
 						            </proceduralStep>
 					          </proceduralStep>
-					          <proceduralStep applicRefId="app-0001">
-						            <para>Wash the Bike</para>
-						            <proceduralStep>
-							              <para>Soak the <internalRef internalRefId="seq-0003" internalRefTargetType="irtt05"/> into <internalRef internalRefId="sup-0003" internalRefTargetType="irtt04"/> and water.</para>
-						            </proceduralStep>
-						            <proceduralStep>
-							              <para>Clean the bicycle with the soaked sponge.</para>
-						            </proceduralStep>
-						            <proceduralStep>
-							              <para>Soak the <internalRef internalRefId="seq-0003" internalRefTargetType="irtt05"/> into <internalRef internalRefId="sup-0002" internalRefTargetType="irtt04"/> and water.</para>
-						            </proceduralStep>
-						            <proceduralStep>
-							              <para>Fully clean the bicycle with the soaked sponge.</para>
-						            </proceduralStep>
-						            <proceduralStep>
-							              <para>Flush the bicycle to make sure that all detergents are removed.</para>
-						            </proceduralStep>
-						            <proceduralStep>
-							              <para>Move the bicycle up and down on its tires to remove all water.</para>
-						            </proceduralStep>
-					          </proceduralStep>
 				        <proceduralStep>
 					          <para>Lubricate the bicycle. Refer to <dmRef>
 							              <dmRefIdent>
-								                <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA4" subSystemCode="1" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="241" infoCodeVariant="A" itemLocationCode="A"/>
+								                <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA4"
+                                subSystemCode="1"
+                                subSubSystemCode="0"
+                                assyCode="00"
+                                disassyCode="00"
+                                disassyCodeVariant="AA"
+                                infoCode="241"
+                                infoCodeVariant="A"
+                                itemLocationCode="A"/>
 							              </dmRefIdent>
 						            </dmRef>.</para>
 				        </proceduralStep>

@@ -21,22 +21,19 @@ def run_validator_agent(xml_path: str):
         print(f"Erreur lors de l'analyse du fichier: {str(e)}")
         return
     
-    try:
-        error_msg, error_paths = validate_xml_and_extract_paths(xml_path, tree)
-        if not error_msg:
-            insert_error_to_snowflake(filename, "valid", "/", "/", "/", "/")
-            print("✅ XML is valid according to the schema.")
-            return "valid", "", ""
-        else:
-            print("❌ XML is invalid. Analyzing...\n")
-            explanation = explain_error_with_llm(error_msg)
-            #print("🔧 LLM Suggestion:\n")
-            llm_suggestion = explanation  # The suggestion provided by LLM
-            # Insert the error details into Snowflake
-            insert_error_to_snowflake(filename, "invalid", "error_msg", "/", " ".join(error_paths), llm_suggestion)
-            return "invalid", llm_suggestion, error_paths
-    except Exception as e:
-        print(f"Error: {e}")
+    error_msg, error_paths = validate_xml_and_extract_paths(xml_path, tree)
+    if not error_msg:
+        insert_error_to_snowflake(filename, "valid", "/", "/", "/", "/")
+        print("✅ XML is valid according to the schema.")
+        return "valid", "", ""
+    else:
+        print("❌ XML is invalid. Analyzing...\n")
+        explanation = explain_error_with_llm(error_msg)
+        #print("🔧 LLM Suggestion:\n")
+        llm_suggestion = explanation  # The suggestion provided by LLM
+        # Insert the error details into Snowflake
+        insert_error_to_snowflake(filename, "invalid", "error_msg", "/", " ".join(error_paths), llm_suggestion)
+        return "invalid", llm_suggestion, error_paths
     
 
 def handle_message(message: dict) -> dict:
