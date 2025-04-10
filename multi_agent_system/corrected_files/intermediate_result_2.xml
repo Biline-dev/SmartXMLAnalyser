@@ -5,7 +5,12 @@
    <identAndStatusSection>
       <dmAddress>
          <dmIdent>
+<<<<<<< HEAD
             <dmCode modelIdentCode="BRAKE" systemDiffCode="AAA" systemCode="DA1" subSystemCode="0" subSubSystemCode="A" assyCode="AA" disassyCode="AA" disassyCodeVariant="A" infoCode="341" infoCodeVariant="A" itemLocationCode="A"/><language countryIsoCode="US" languageIsoCode="en"/>
+=======
+            <dmCode modelIdentCode="BRAKE" systemDiffCode="AAA" systemCode="DA1" subSystemCode="0" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="341" infoCodeVariant="A" itemLocationCode="A"/>
+            <language countryIsoCode="US" languageIsoCode="en"/>
+>>>>>>> 8cf640795e048c16392e7255a64b24cd068cfc2f
             <issueInfo issueNumber="002" inWork="00"/>
          </dmIdent>
          <dmAddressItems>

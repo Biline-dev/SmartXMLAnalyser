@@ -21,9 +21,7 @@ def orchestrator_llm(status, suggestions, instructions, xml_file_path, xpath, ha
     # Nettoyage des entrées
     status_clean = status.replace("'", "''").replace("\n", " ").replace("\r", " ") if status else ""
     suggestions_clean = suggestions.replace("'", "''").replace("\n", " ").replace("\r", " ") if suggestions else ""
-    instructions_clean = instructions.replace("'", "''").replace("\n", " ").replace("\r", " ") if instructions else ""
 
-    # Prompt amélioré
     prompt = f"""
     Vous êtes un agent orchestrateur responsable de vérifier, corriger et modifier un fichier XML.
 
@@ -31,7 +29,6 @@ def orchestrator_llm(status, suggestions, instructions, xml_file_path, xpath, ha
     Le fichier a-t-il déjà été modifié ? : {"oui" if has_been_modified else "non"}
 
     Voici les suggestions de correction (si nécessaire) : {suggestions_clean}
-    Voici les instructions pour la modification : {instructions_clean}
 
     Règles :
     - Si le fichier nest pas valide, répondez "correction".
@@ -91,11 +88,20 @@ def orchestrator_llm(status, suggestions, instructions, xml_file_path, xpath, ha
 
 
 if __name__ == "__main__":
-    xml_file_path = "data/TC2_additions_2/base_documents/DMC-S1000DBIKE-AAA-D00-00-00-00AA-121A-A_009-00_en-US.XML"
-    instructions = "data/TC2_additions_2/instructions"
 
-   # instructions = extract_instructions_from_file(instructions_file_path)
+    prompt = """
+        At the very beginning of the main procedure, add a new step that acts as a chapter header. This step should include a title with the text 'Pre-Operational Checks.
 
+        As the first instruction within the 'Pre-Operational Checks' chapter, add a substep with a description: 'Inspect the brake lever for signs of wear or corrosion.
+
+        As the second instruction within the 'Pre-Operational Checks' chapter, add a substep with a description: 'Ensure the hydraulic fluid is at the recommended level.
+
+        Finally, as the third instruction within the 'Pre-Operational Checks' chapter, add a substep with a description: 'Verify that all mounting bolts are properly secured.
+    """
+
+    xml_file_path = "testing_cases/TC1_additions_1/base_documents/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML"
+    #instructions = "testing_cases/TC1_additions_1/instructions/" #with file
+    instructions = prompt # with prompt
     should_continue = True
     has_been_modified = False
 

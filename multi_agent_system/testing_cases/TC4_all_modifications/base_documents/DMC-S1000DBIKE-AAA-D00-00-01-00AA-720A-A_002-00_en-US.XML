@@ -1,22 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><!DOCTYPE dmodule >
-<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns:dc="http://www.purl.org/dc/elements/1.1/"
-         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-         xmlns:xlink="http://www.w3.org/1999/xlink"
-         xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_4-2/xml_schema_flat/proced.xsd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE dmodule>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dc="http://www.purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_4-2/xml_schema_flat/proced.xsd">
 
    <identAndStatusSection>
       <dmAddress>
          <dmIdent>
-            <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="D00"
-                    subSystemCode="0"
-                    subSubSystemCode="0"
-                    assyCode="01"
-                    disassyCode="00"
-                    disassyCodeVariant="AA"
-                    infoCode="720"
-                    infoCodeVariant="A"
-                    itemLocationCode="A"/>
+            <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="D00" subSystemCode="0" subSubSystemCode="0" assyCode="01" disassyCode="00" disassyCodeVariant="AA" infoCode="720" infoCodeVariant="A" itemLocationCode="A"/>
             <language countryIsoCode="US" languageIsoCode="en"/>
             <issueInfo issueNumber="002" inWork="00"/>
          </dmIdent>
@@ -99,15 +88,7 @@
          <applicCrossRefTableRef>
             <dmRef>
                <dmRefIdent>
-                  <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="D00"
-                          subSystemCode="0"
-                          subSubSystemCode="0"
-                          assyCode="00"
-                          disassyCode="00"
-                          disassyCodeVariant="AA"
-                          infoCode="00W"
-                          infoCodeVariant="A"
-                          itemLocationCode="D"/>
+                  <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="D00" subSystemCode="0" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="00W" infoCodeVariant="A" itemLocationCode="D"/>
                </dmRefIdent>
             </dmRef>
          </applicCrossRefTableRef>
@@ -116,13 +97,10 @@
                <simplePara>Mountain bicycle and Mountain storm Mk1</simplePara>
             </displayText>
 	           <evaluate andOr="and">
-		             <assert applicPropertyIdent="type" applicPropertyType="prodattr"
-                       applicPropertyValues="Mountain bicycle"/>
+		             <assert applicPropertyIdent="type" applicPropertyType="prodattr" applicPropertyValues="Mountain bicycle"/>
 		             <evaluate andOr="and">
-			               <assert applicPropertyIdent="model" applicPropertyType="prodattr"
-                          applicPropertyValues="Mountain storm"/>
-			               <assert applicPropertyIdent="version" applicPropertyType="prodattr"
-                          applicPropertyValues="Mk1"/>
+			               <assert applicPropertyIdent="model" applicPropertyType="prodattr" applicPropertyValues="Mountain storm"/>
+			               <assert applicPropertyIdent="version" applicPropertyType="prodattr" applicPropertyValues="Mk1"/>
 		             </evaluate>
 	           </evaluate>
          </applic>
@@ -137,15 +115,7 @@
          <brexDmRef>
             <dmRef>
                <dmRefIdent>
-                  <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="D00"
-                          subSystemCode="0"
-                          subSubSystemCode="0"
-                          assyCode="00"
-                          disassyCode="00"
-                          disassyCodeVariant="AA"
-                          infoCode="022"
-                          infoCodeVariant="A"
-                          itemLocationCode="D"/>
+                  <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="D00" subSystemCode="0" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
                </dmRefIdent>
             </dmRef>
          </brexDmRef>
@@ -165,93 +135,37 @@
       <refs>
          <dmRef>
             <dmRefIdent>
-               <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="D00"
-                       subSystemCode="0"
-                       subSubSystemCode="0"
-                       assyCode="01"
-                       disassyCode="00"
-                       disassyCodeVariant="AA"
-                       infoCode="930"
-                       infoCodeVariant="A"
-                       itemLocationCode="A"/>
+               <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="D00" subSystemCode="0" subSubSystemCode="0" assyCode="01" disassyCode="00" disassyCodeVariant="AA" infoCode="930" infoCodeVariant="A" itemLocationCode="A"/>
             </dmRefIdent>
          </dmRef>
          <dmRef>
             <dmRefIdent>
-               <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2"
-                       subSystemCode="1"
-                       subSubSystemCode="0"
-                       assyCode="00"
-                       disassyCode="00"
-                       disassyCodeVariant="AA"
-                       infoCode="720"
-                       infoCodeVariant="A"
-                       itemLocationCode="A"/>
+               <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2" subSystemCode="1" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="720" infoCodeVariant="A" itemLocationCode="A"/>
             </dmRefIdent>
          </dmRef>
          <dmRef>
             <dmRefIdent>
-               <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2"
-                       subSystemCode="1"
-                       subSubSystemCode="0"
-                       assyCode="00"
-                       disassyCode="00"
-                       disassyCodeVariant="AA"
-                       infoCode="720"
-                       infoCodeVariant="A"
-                       itemLocationCode="A"/>
+               <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2" subSystemCode="1" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="720" infoCodeVariant="A" itemLocationCode="A"/>
             </dmRefIdent>
          </dmRef>
          <dmRef>
             <dmRefIdent>
-               <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2"
-                       subSystemCode="3"
-                       subSubSystemCode="0"
-                       assyCode="00"
-                       disassyCode="00"
-                       disassyCodeVariant="AA"
-                       infoCode="720"
-                       infoCodeVariant="A"
-                       itemLocationCode="A"/>
+               <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2" subSystemCode="3" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="720" infoCodeVariant="A" itemLocationCode="A"/>
             </dmRefIdent>
          </dmRef>
          <dmRef>
             <dmRefIdent>
-               <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2"
-                       subSystemCode="3"
-                       subSubSystemCode="0"
-                       assyCode="00"
-                       disassyCode="00"
-                       disassyCodeVariant="AA"
-                       infoCode="720"
-                       infoCodeVariant="A"
-                       itemLocationCode="A"/>
+               <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2" subSystemCode="3" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="720" infoCodeVariant="A" itemLocationCode="A"/>
             </dmRefIdent>
          </dmRef>
          <dmRef>
             <dmRefIdent>
-               <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2"
-                       subSystemCode="4"
-                       subSubSystemCode="0"
-                       assyCode="00"
-                       disassyCode="00"
-                       disassyCodeVariant="AA"
-                       infoCode="720"
-                       infoCodeVariant="A"
-                       itemLocationCode="A"/>
+               <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2" subSystemCode="4" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="720" infoCodeVariant="A" itemLocationCode="A"/>
             </dmRefIdent>
          </dmRef>
          <dmRef>
             <dmRefIdent>
-               <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2"
-                       subSystemCode="4"
-                       subSubSystemCode="0"
-                       assyCode="00"
-                       disassyCode="00"
-                       disassyCodeVariant="AA"
-                       infoCode="720"
-                       infoCodeVariant="A"
-                       itemLocationCode="A"/>
+               <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2" subSystemCode="4" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="720" infoCodeVariant="A" itemLocationCode="A"/>
             </dmRefIdent>
          </dmRef>
       </refs>
@@ -268,15 +182,7 @@
 	<reqTechInfo reqTechInfoCategory="ti02">
 		                <dmRef>
 			                  <dmRefIdent>
-				                    <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2"
-                                subSystemCode="1"
-                                subSubSystemCode="0"
-                                assyCode="00"
-                                disassyCode="00"
-                                disassyCodeVariant="AA"
-                                infoCode="720"
-                                infoCodeVariant="A"
-                                itemLocationCode="A"/>
+				                    <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2" subSystemCode="1" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="720" infoCodeVariant="A" itemLocationCode="A"/>
 			                  </dmRefIdent>	
 		                </dmRef>
 	              </reqTechInfo>
@@ -284,15 +190,7 @@
 	<reqTechInfo reqTechInfoCategory="ti02">
 		                <dmRef>
 			                  <dmRefIdent>
-				                    <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2"
-                                subSystemCode="3"
-                                subSubSystemCode="0"
-                                assyCode="00"
-                                disassyCode="00"
-                                disassyCodeVariant="AA"
-                                infoCode="720"
-                                infoCodeVariant="A"
-                                itemLocationCode="A"/>
+				                    <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2" subSystemCode="3" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="720" infoCodeVariant="A" itemLocationCode="A"/>
 			                  </dmRefIdent>	
 		                </dmRef>
 	              </reqTechInfo>
@@ -300,15 +198,7 @@
 	<reqTechInfo reqTechInfoCategory="ti02">
 		                <dmRef>
 			                  <dmRefIdent>
-				                    <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2"
-                                subSystemCode="4"
-                                subSubSystemCode="0"
-                                assyCode="00"
-                                disassyCode="00"
-                                disassyCodeVariant="AA"
-                                infoCode="720"
-                                infoCodeVariant="A"
-                                itemLocationCode="A"/>
+				                    <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2" subSystemCode="4" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="720" infoCodeVariant="A" itemLocationCode="A"/>
 			                  </dmRefIdent>	
 		                </dmRef>
 	              </reqTechInfo>
@@ -343,15 +233,7 @@
 			                  <materialSetRef materialSetIdent="SPA-1000-1" materialSetIssue="001">
 				                    <dmRef>
 					                      <dmRefIdent>
-						                        <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="D00"
-                                      subSystemCode="0"
-                                      subSubSystemCode="0"
-                                      assyCode="01"
-                                      disassyCode="00"
-                                      disassyCodeVariant="AA"
-                                      infoCode="930"
-                                      infoCodeVariant="A"
-                                      itemLocationCode="A"/>
+						                        <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="D00" subSystemCode="0" subSubSystemCode="0" assyCode="01" disassyCode="00" disassyCodeVariant="AA" infoCode="930" infoCodeVariant="A" itemLocationCode="A"/>
 						                        <issueInfo issueNumber="002" inWork="00"/>
 					                      </dmRefIdent>	
 				                    </dmRef>
@@ -382,15 +264,7 @@
                <para>Install the headset, refer to: 
 <dmRef>
 	                    <dmRefIdent>
-		                      <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2"
-                                subSystemCode="3"
-                                subSubSystemCode="0"
-                                assyCode="00"
-                                disassyCode="00"
-                                disassyCodeVariant="AA"
-                                infoCode="720"
-                                infoCodeVariant="A"
-                                itemLocationCode="A"/>
+		                      <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2" subSystemCode="3" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="720" infoCodeVariant="A" itemLocationCode="A"/>
 	                    </dmRefIdent>
                   </dmRef>
                </para>
@@ -399,15 +273,7 @@
                <para>To install the spacers, refer to: 
 <dmRef>
 	                    <dmRefIdent>
-		                      <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2"
-                                subSystemCode="4"
-                                subSubSystemCode="0"
-                                assyCode="00"
-                                disassyCode="00"
-                                disassyCodeVariant="AA"
-                                infoCode="720"
-                                infoCodeVariant="A"
-                                itemLocationCode="A"/>
+		                      <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2" subSystemCode="4" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="720" infoCodeVariant="A" itemLocationCode="A"/>
 	                    </dmRefIdent>	
                   </dmRef>
                </para>
@@ -416,15 +282,7 @@
                <para>Install the stem, refer to: 
 <dmRef>
 	                    <dmRefIdent>
-		                      <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2"
-                                subSystemCode="1"
-                                subSubSystemCode="0"
-                                assyCode="00"
-                                disassyCode="00"
-                                disassyCodeVariant="AA"
-                                infoCode="720"
-                                infoCodeVariant="A"
-                                itemLocationCode="A"/>
+		                      <dmCode modelIdentCode="S1000DBIKE" systemDiffCode="AAA" systemCode="DA2" subSystemCode="1" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="720" infoCodeVariant="A" itemLocationCode="A"/>
 	                    </dmRefIdent>
                   </dmRef>
                </para>

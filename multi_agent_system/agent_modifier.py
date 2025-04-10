@@ -621,7 +621,21 @@ def compare_xml_files(file1_path, file2_path, ignore_order=True):
 
 ###=========
 
-def main(xml_file_path:str, instructions_directory:str, output_directory:str, expected_result:str, model_name="sonnet"):
+
+def extract_instructions_from_prompt(prompt: str) -> list[str]:
+    # Split en fonction des sauts de ligne doubles ou simples
+    raw_instructions = [line.strip() for line in prompt.split('\n') if line.strip()]
+    
+    # S'assurer que chaque instruction se termine par un point
+    instructions = []
+    for instr in raw_instructions:
+        if not instr.endswith('.'):
+            instr += '.'
+        instructions.append(instr)
+        
+    return instructions
+
+def main(xml_file_path:str, prompt:str, output_directory:str, expected_result:str, model_name="sonnet"):
 
     # Read initial XML file
     xml_content = read_file(xml_file_path)
@@ -630,8 +644,7 @@ def main(xml_file_path:str, instructions_directory:str, output_directory:str, ex
         return
     
     # Get all instruction files from the directory and sort them
-    instruction_files = [f for f in os.listdir(instructions_directory) if f.endswith('.txt')]
-    instruction_files.sort()  # Sort to ensure consistent order
+    instruction_files = extract_instructions_from_prompt(prompt)
     
     # Create output directory if it doesn't exist
     os.makedirs(output_directory, exist_ok=True)
@@ -643,9 +656,7 @@ def main(xml_file_path:str, instructions_directory:str, output_directory:str, ex
     
     # Process each instruction sequentially
     for i, instruction_file in enumerate(instruction_files):
-        instruction_path = os.path.join(instructions_directory, instruction_file)
-        instruction_content = read_file(instruction_path)
-        
+        instruction_content = instruction_files[i]
         if not instruction_content:
             print(f"Error: Could not read instruction file {instruction_file}. Skipping.")
             continue
@@ -676,7 +687,7 @@ def main(xml_file_path:str, instructions_directory:str, output_directory:str, ex
             print(f"Warning: No results returned for instruction {instruction_file}")
     
     # Save the final result after all instructions have been applied
-    final_output_path = os.path.join(output_directory, "DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.xml")
+    final_output_path = os.path.join(output_directory, os.path.basename(xml_file_path))
     with open(final_output_path, 'w', encoding='utf-8') as file:
         file.write(current_xml)
     
@@ -714,10 +725,9 @@ if __name__ == "__main__":
     main(xml_file_path, instructions_directory, output_directory, expected_result, model_name)
 
 def agent_modifier (xml_file_path, instructions_directory):
-    print("agent_modifier===============>")
     output_directory = "corrected_files/"
     model_name = 'sonnet'
-    expected_result = 'data/TC1_additions_1/expected_result/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML'
+    expected_result = 'testing_cases/TC1_additions_1/expected_result/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML'
 
     main(xml_file_path, instructions_directory, output_directory, expected_result, model_name)
     return expected_result
