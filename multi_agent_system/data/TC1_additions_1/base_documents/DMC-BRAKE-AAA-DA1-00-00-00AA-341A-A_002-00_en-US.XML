@@ -2,19 +2,17 @@
 <!DOCTYPE dmodule>
 <dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dc="http://www.purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_4-2/xml_schema_flat/proced.xsd">
 
-   <identAndStatusSection>
-      <dmAddress>
+   <identAndStatusSection/><dmAddress>
          <dmIdent>
-            <dmCode modelIdentCode="BRAKE" systemDiffCode="AAA" systemCode="DA1" subSystemCode="0" subSubSriant="AA" infoCode="341" infoCodeVariant="A" itemLocationCode="A"/>
+            <dmCode modelIdentCode="BRAKE" systemDiffCode="AAA" systemCode="DA1" subSystemCode="0" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="AA" infoCode="341" infoCodeVariant="A" itemLocationCode="A"/>
             <language countryIsoCode="US" languageIsoCode="en"/>
             <issueInfo issueNumber="002" inWork="00"/>
-         </dmIdent>
-         <dmAddressItems>
+         </dmIdent><dmAddressItems>
             <issueDate day="31" month="12" year="2016"/>
-            <dmTitle>
+            <dmTe>
                <techName>Brake system</techName>
                <infoName>Manual test</infoName>
-            </dmTitle>
+            </dmTe>
          </dmAddressItems>
       </dmAddress>
       <dmStatus issueType="new">
@@ -123,52 +121,4 @@
          </reasonForUpdate>
 
       </dmStatus>
-   </identAndStatusSection>
-   <content>
-      <procedure>
-         <preliminaryRqmts>
-            <reqCondGroup>
-               <noConds/>
-            </reqCondGroup>
-            <reqPersons>
-               <person man="A">
-                  <personCategory personCategoryCode="Basic user"/>
-                  <trade>Operator</trade>
-                  <estimatedTime unitOfMeasure="h">0,3</estimatedTime>
-               </person>
-            </reqPersons>
-            <reqSupportEquips>
-               <noSupportEquips/>
-            </reqSupportEquips>
-            <reqSupplies>
-               <noSupplies/>
-            </reqSupplies>
-            <reqSpares>
-               <noSpares/>
-            </reqSpares>
-            <reqSafety>
-               <noSafety/>
-            </reqSafety>
-         </preliminaryRqmts>
-         <mainProcedure>
-            <proceduralStep>
-               <para>Put the bicycle in a vertical position.</para>
-            </proceduralStep>
-            <proceduralStep>
-               <para>Hold the handle bars and push the bicycle forwards.</para>
-            </proceduralStep>
-            <proceduralStep>
-               <para>Apply the brakes.</para>
-            </proceduralStep>
-            <proceduralStep>
-               <para>Make sure that the wheels lock and the bicycle stops.</para>
-            </proceduralStep>
-         </mainProcedure>
-         <closeRqmts>
-            <reqCondGroup>
-               <noConds/>
-            </reqCondGroup>
-         </closeRqmts>
-      </procedure>
-   </content>
-</dmodule>
+   </dmodule>
