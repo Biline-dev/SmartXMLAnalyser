@@ -99,3 +99,17 @@ def extract_instructions_from_file(file_path: str) -> str:
         return instructions_text
     except Exception as e:
         return f"Erreur lors de la lecture du fichier : {str(e)}"
+    
+
+def extract_instructions_from_prompt(prompt: str) -> list[str]:
+    # Split en fonction des sauts de ligne doubles ou simples
+    raw_instructions = [line.strip() for line in prompt.split('\n') if line.strip()]
+    
+    # S'assurer que chaque instruction se termine par un point
+    instructions = []
+    for instr in raw_instructions:
+        if not instr.endswith('.'):
+            instr += '.'
+        instructions.append(instr)
+        
+    return instructions

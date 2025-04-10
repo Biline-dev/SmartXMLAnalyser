@@ -618,15 +618,6 @@ def compare_xml_files(file1_path, file2_path, ignore_order=True):
 
 ###=========
 
-prompt = """
-At the very beginning of the main procedure, add a new step that acts as a chapter header. This step should include a title with the text 'Pre-Operational Checks.
-
-As the first instruction within the 'Pre-Operational Checks' chapter, add a substep with a description: 'Inspect the brake lever for signs of wear or corrosion.
-
-As the second instruction within the 'Pre-Operational Checks' chapter, add a substep with a description: 'Ensure the hydraulic fluid is at the recommended level.
-
-Finally, as the third instruction within the 'Pre-Operational Checks' chapter, add a substep with a description: 'Verify that all mounting bolts are properly secured.
-"""
 
 def extract_instructions_from_prompt(prompt: str) -> list[str]:
     # Split en fonction des sauts de ligne doubles ou simples
@@ -641,7 +632,7 @@ def extract_instructions_from_prompt(prompt: str) -> list[str]:
         
     return instructions
 
-def main(xml_file_path:str, instructions_directory:str, output_directory:str, expected_result:str, model_name="sonnet"):
+def main(xml_file_path:str, prompt:str, output_directory:str, expected_result:str, model_name="sonnet"):
 
     # Read initial XML file
     xml_content = read_file(xml_file_path)
