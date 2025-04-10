@@ -35,6 +35,18 @@ def process_file(file_path, instructions, log_placeholder):
     progress_bar = st.progress(0)
     status_message = st.empty()
     
+    # Placeholder for real-time preview
+    preview_container = st.container()
+    preview_placeholder = preview_container.empty()
+    
+    # Store original content for comparison
+    with open(file_path, 'r', encoding='utf-8') as f:
+        original_content = f.read()
+        
+    # Show initial file content
+    preview_placeholder.markdown("### Version originale du fichier")
+    preview_placeholder.code(original_content, language="xml")
+    
     iteration = 0
     max_iterations = 10  # Safety limit
     
@@ -54,9 +66,43 @@ def process_file(file_path, instructions, log_placeholder):
             status, suggestions, instructions, file_path, xpath, has_been_modified, log_placeholder, full_log
         )
         
-        if decision == "modification":
+        if decision == "modification" or decision == "correction":
             has_been_modified = True
             status_message.text(f"Iteration {iteration}: File modified")
+            
+            # Update real-time preview after modification
+            with open(file_path, 'r', encoding='utf-8') as f:
+                modified_content = f.read()
+            
+            # Show modified content with comparison
+            preview_placeholder.empty()  # Clear previous content
+            preview_placeholder.markdown("### Aperçu des modifications en temps réel")
+            
+            # Create tabs for original and modified
+            orig_tab, mod_tab, diff_tab = preview_placeholder.tabs(["Original", "Modifié", "Différences"])
+            
+            with orig_tab:
+                st.code(original_content, language="xml")
+            
+            with mod_tab:
+                st.code(modified_content, language="xml")
+                
+            with diff_tab:
+                # Simple difference highlighting (you might want to use a diff library for better results)
+                try:
+                    import difflib
+                    diff = difflib.unified_diff(
+                        original_content.splitlines(),
+                        modified_content.splitlines(),
+                        lineterm='',
+                        n=3  # context lines
+                    )
+                    
+                    diff_text = '\n'.join(diff)
+                    st.code(diff_text, language="diff")
+                except Exception as e:
+                    st.error(f"Impossible d'afficher les différences: {str(e)}")
+                    
         elif decision == "stop":
             should_continue = False
             status_message.text("Processing complete!")
@@ -68,6 +114,7 @@ def process_file(file_path, instructions, log_placeholder):
         st.warning("Reached maximum iterations. Process may not be complete.")
     
     return file_path
+
 
 
 def orchestrator_llm(status, suggestions, instructions, xml_file_path, xpath, has_been_modified, log_placeholder, full_log):
@@ -245,7 +292,7 @@ def main():
         st.success(f"Fichier chargé : {xml_file.name}")
         with st.expander("Aperçu du contenu XML"):
             xml_content = xml_file.getvalue().decode("utf-8")
-            st.code(xml_content[:500] + ("..." if len(xml_content) > 500 else ""), language="xml")
+            st.code(xml_content, language="xml")  # Affichage du fichier XML complet
 
     # Récupération des instructions
     instructions = ""
@@ -281,6 +328,11 @@ def main():
     # Conteneur pour le statut
     status_container = st.empty()
     
+    # Section pour l'aperçu des modifications (visible même avant de cliquer sur traitement)
+    st.markdown("#### 👁️ Aperçu des modifications")
+    st.info("Les modifications du fichier s'afficheront ici en temps réel pendant le traitement.")
+    preview_expander = st.expander("Visualiser les changements", expanded=True)
+    
     if process_clicked:
         if not xml_file:
             st.warning("⚠️ Merci d'uploader un fichier XML")
@@ -312,11 +364,6 @@ def main():
                                     key="download_button",
                                     use_container_width=True
                                 )
-                            
-                            # Afficher un aperçu du résultat
-                            with st.expander("Aperçu du fichier modifié"):
-                                modified_content = file_content.decode("utf-8")
-                                st.code(modified_content[:500] + ("..." if len(modified_content) > 500 else ""), language="xml")
                         else:
                             st.error("❌ Fichier modifié introuvable.")
                 except Exception as e:

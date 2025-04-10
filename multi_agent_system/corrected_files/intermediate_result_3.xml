@@ -150,32 +150,18 @@
                <noSafety/>
             </reqSafety>
          </preliminaryRqmts>
-         <mainProcedure>
-            <proceduralStep>
-               <title>Pre-Operational Checks</title>
-               <proceduralStep>
-                  <para>Inspect the brake lever for signs of wear or corrosion.</para>
-               </proceduralStep>
-               <proceduralStep>
-                  <para>Ensure the hydraulic fluid is at the recommended level.</para>
-               </proceduralStep>
-               <proceduralStep>
-                  <para>Verify that all mounting bolts are properly secured.</para>
-               </proceduralStep>
-            </proceduralStep>
-            <proceduralStep>
-               <para>Put the bicycle in a vertical position.</para>
-            </proceduralStep>
-            <proceduralStep>
-               <para>Hold the handle bars and push the bicycle forwards.</para>
-            </proceduralStep>
-            <proceduralStep>
-               <para>Apply the brakes.</para>
-            </proceduralStep>
-            <proceduralStep>
-               <para>Make sure that the wheels lock and the bicycle stops.</para>
-            </proceduralStep>
-         </mainProcedure><closeRqmts>
+         <proceduralStep>
+   <title>Pre-Operational Checks</title>
+   <proceduralStep>
+      <para>Inspect the brake lever for signs of wear or corrosion.</para>
+   </proceduralStep>
+   <proceduralStep>
+      <para>Ensure the hydraulic fluid is at the recommended level.</para>
+   </proceduralStep>
+   <proceduralStep>
+      <para>Verify that all mounting bolts are properly secured.</para>
+   </proceduralStep>
+</proceduralStep><closeRqmts>
             <reqCondGroup>
                <noConds/>
             </reqCondGroup>
