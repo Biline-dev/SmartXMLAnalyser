@@ -165,27 +165,8 @@ We implemented a technique using cosine similarity between:
 The system only selects an XPath when the cosine similarity is greater than 0.5. Once an XML element is identified, the system traverses up the structure to determine the appropriate context.
 This approach, however, requires validation through additional testing across different use cases to confirm its effectiveness.
 
-## LLms Comparison
-
-
-
-## User Interface
-
-
 
 ## 🚀 How to Run the Project  
-
-
-### ⚠️ Important Notes  
-
-
-### 🌐 Access the Application  
-
-
-## Challenges Encountered
-
-
-## Next Staps
 
 
 
