@@ -75,7 +75,7 @@ def process_file(file_path, instructions, log_placeholder):
         # Update the current file path
         current_file_path = new_file_path
         
-        if decision == "modification" or decision == "correction":
+        if decision == "modification":
             has_been_modified = True
             status_message.text(f"Iteration {iteration}: File modified")
             
@@ -135,7 +135,6 @@ def process_file(file_path, instructions, log_placeholder):
         original_basename = os.path.basename(file_path)
         possible_corrected_path = os.path.join(os.path.dirname(os.path.dirname(current_file_path)), 
                                             "corrected_files", original_basename)
-        print("possible_corrected_path------->",possible_corrected_path)
         if os.path.exists(possible_corrected_path):
             log_and_display(log_placeholder, full_log, f"Fichier corrigé trouvé: {possible_corrected_path}")
             with open(possible_corrected_path, 'r', encoding='utf-8') as f:
@@ -182,7 +181,6 @@ def orchestrator_llm(status, suggestions, instructions, xml_file_path, xpath, ha
     # Nettoyage des entrées
     status_clean = status.replace("'", "''").replace("\n", " ").replace("\r", " ") if status else ""
     suggestions_clean = suggestions.replace("'", "''").replace("\n", " ").replace("\r", " ") if suggestions else ""
-
     prompt = f"""
     Vous êtes un agent orchestrateur responsable de vérifier, corriger et modifier un fichier XML.
 
@@ -352,8 +350,8 @@ def main():
     if xml_file:
         st.success(f"Fichier chargé : {xml_file.name}")
         xml_content = xml_file.getvalue().decode("utf-8")
-        with st.expander("Aperçu du contenu XML"):
-            st.code(xml_content, language="xml")
+        #with st.expander("Aperçu du contenu XML"):
+            #st.code(xml_content, language="xml")
 
     instructions = ""
     if instructions_text.strip():
@@ -385,7 +383,6 @@ def main():
     status_container = st.empty()
 
     st.markdown("#### 👁️ Aperçu des modifications")
-    st.info("Les modifications du fichier s'afficheront ici en temps réel pendant le traitement.")
     preview_expander = st.expander("Visualiser les changements", expanded=True)
 
     if process_clicked:
@@ -397,7 +394,7 @@ def main():
             with st.spinner("🔧 Traitement en cours..."):
                 try:
                     # Sauvegarde du fichier original pour traitement
-                    temp_file_path = f"./uploaded_{xml_file.name}"
+                    temp_file_path = f"./{xml_file.name}"
                     with open(temp_file_path, "wb") as f:
                         f.write(xml_file.getvalue())
 
