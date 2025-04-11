@@ -42,7 +42,10 @@ def process_file(file_path, instructions, log_placeholder):
     # Store original content for comparison
     with open(file_path, 'r', encoding='utf-8') as f:
         original_content = f.read()
-        
+    
+    # Capture original file name for later reference
+    original_file_name = os.path.basename(file_path)
+    
     # Show initial file content
     preview_placeholder.markdown("### Version originale du fichier")
     preview_placeholder.code(original_content, language="xml")
@@ -51,6 +54,9 @@ def process_file(file_path, instructions, log_placeholder):
     max_iterations = 10  # Safety limit
     
     full_log = []  # Initialize the log
+    
+    # Keep track of the current file path as it may change during iterations
+    current_file_path = file_path
 
     while should_continue and iteration < max_iterations:
         iteration += 1
@@ -58,21 +64,29 @@ def process_file(file_path, instructions, log_placeholder):
         progress_bar.progress(progress)
         
         status_message.text(f"Iteration {iteration}: Validating file...")
-        status, suggestions, xpath = agent_validator(file_path)
+        status, suggestions, xpath = agent_validator(current_file_path)
         log_and_display(log_placeholder, full_log, f"Iteration {iteration}: Validation done.")
         
         status_message.text(f"Iteration {iteration}: Orchestrating next action...")
-        file_path, decision = orchestrator_llm(
-            status, suggestions, instructions, file_path, xpath, has_been_modified, log_placeholder, full_log
+        new_file_path, decision = orchestrator_llm(
+            status, suggestions, instructions, current_file_path, xpath, has_been_modified, log_placeholder, full_log
         )
+        
+        # Update the current file path
+        current_file_path = new_file_path
         
         if decision == "modification" or decision == "correction":
             has_been_modified = True
             status_message.text(f"Iteration {iteration}: File modified")
             
             # Update real-time preview after modification
-            with open(file_path, 'r', encoding='utf-8') as f:
+            with open(current_file_path, 'r', encoding='utf-8') as f:
                 modified_content = f.read()
+            
+            # Check if the file is in the corrected_files directory
+            dir_name = os.path.dirname(current_file_path)
+            if "corrected_files" in dir_name:
+                log_and_display(log_placeholder, full_log, f"Fichier modifié détecté dans le dossier corrected_files")
             
             # Show modified content with comparison
             preview_placeholder.empty()  # Clear previous content
@@ -88,13 +102,14 @@ def process_file(file_path, instructions, log_placeholder):
                 st.code(modified_content, language="xml")
                 
             with diff_tab:
-                # Simple difference highlighting (you might want to use a diff library for better results)
                 try:
                     import difflib
                     diff = difflib.unified_diff(
                         original_content.splitlines(),
                         modified_content.splitlines(),
                         lineterm='',
+                        fromfile=original_file_name,
+                        tofile=os.path.basename(current_file_path),
                         n=3  # context lines
                     )
                     
@@ -113,7 +128,53 @@ def process_file(file_path, instructions, log_placeholder):
     if iteration >= max_iterations and should_continue:
         st.warning("Reached maximum iterations. Process may not be complete.")
     
-    return file_path
+    # Ensure we're showing the final comparison between original and final modified file
+    # This is especially important if the file is in the corrected_files directory
+    try:
+        # First check if there's a corrected files directory with our file
+        original_basename = os.path.basename(file_path)
+        possible_corrected_path = os.path.join(os.path.dirname(os.path.dirname(current_file_path)), 
+                                            "corrected_files", original_basename)
+        print("possible_corrected_path------->",possible_corrected_path)
+        if os.path.exists(possible_corrected_path):
+            log_and_display(log_placeholder, full_log, f"Fichier corrigé trouvé: {possible_corrected_path}")
+            with open(possible_corrected_path, 'r', encoding='utf-8') as f:
+                final_modified_content = f.read()
+        else:
+            # If not found, use the current file path
+            with open(current_file_path, 'r', encoding='utf-8') as f:
+                final_modified_content = f.read()
+        
+        # Show final comparison
+        preview_placeholder.empty()
+        preview_placeholder.markdown("### Comparaison finale")
+        
+        final_orig_tab, final_mod_tab, final_diff_tab = preview_placeholder.tabs(["Original", "Modifié", "Différences"])
+        
+        with final_orig_tab:
+            st.code(original_content, language="xml")
+        
+        with final_mod_tab:
+            st.code(final_modified_content, language="xml")
+            
+        with final_diff_tab:
+            import difflib
+            final_diff = difflib.unified_diff(
+                original_content.splitlines(),
+                final_modified_content.splitlines(),
+                lineterm='',
+                fromfile=original_file_name,
+                tofile="Fichier modifié final",
+                n=3  # context lines
+            )
+            
+            final_diff_text = '\n'.join(final_diff)
+            st.code(final_diff_text, language="diff")
+    
+    except Exception as e:
+        log_and_display(log_placeholder, full_log, f"Erreur lors de la comparaison finale: {str(e)}")
+    
+    return current_file_path
 
 
 
@@ -243,7 +304,6 @@ def main():
     st.markdown('<div class="title-style">Smart - XML</div>', unsafe_allow_html=True)
     st.markdown('<div class="subtitle-style">Assistant intelligent de modification de documentation</div>', unsafe_allow_html=True)
 
-    # Exemple de prompt
     example_prompt = """
     ✨ Exemples d'instructions pour modifier le document XML :
 
@@ -253,12 +313,12 @@ def main():
 
      🗑️  Suppression : Remove the step titled 'Pressure Sensor Calibration.'
 
-""".strip()
+    """.strip()
 
     with st.container():
         st.markdown("#### 📝 Instructions")
         tab1, tab2 = st.tabs(["✍️  Prompt   ", "   📁  Fichier d'instructions"])
-        
+
         log_placeholder = st.empty()
         instructions_text = ""
         instruction_file = None
@@ -288,26 +348,24 @@ def main():
         key="xml_file_uploader"
     )
 
+    xml_content = ""
     if xml_file:
         st.success(f"Fichier chargé : {xml_file.name}")
+        xml_content = xml_file.getvalue().decode("utf-8")
         with st.expander("Aperçu du contenu XML"):
-            xml_content = xml_file.getvalue().decode("utf-8")
-            st.code(xml_content, language="xml")  # Affichage du fichier XML complet
+            st.code(xml_content, language="xml")
 
-    # Récupération des instructions
     instructions = ""
     if instructions_text.strip():
         instructions = instructions_text.strip()
     elif instruction_file:
         instructions = instruction_file.getvalue().decode("utf-8").strip()
 
-    # Traitement - Bouton centré
     st.markdown("---")
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         process_clicked = st.button("🚀  Lancer le traitement", key="process_button", use_container_width=True)
 
-    # Bouton d'affichage du guide
     with st.expander("ℹ️ Comment ça marche ?"):
         st.markdown("""
         <div class="collapsible">
@@ -319,20 +377,17 @@ def main():
         </ol>
         </div>
         """, unsafe_allow_html=True)
-    
-    # Section pour les logs
+
     st.markdown("#### 📊 Logs d'exécution")
     log_container = st.container()
     log_placeholder = log_container.empty()
-    
-    # Conteneur pour le statut
+
     status_container = st.empty()
-    
-    # Section pour l'aperçu des modifications (visible même avant de cliquer sur traitement)
+
     st.markdown("#### 👁️ Aperçu des modifications")
     st.info("Les modifications du fichier s'afficheront ici en temps réel pendant le traitement.")
     preview_expander = st.expander("Visualiser les changements", expanded=True)
-    
+
     if process_clicked:
         if not xml_file:
             st.warning("⚠️ Merci d'uploader un fichier XML")
@@ -341,31 +396,68 @@ def main():
         else:
             with st.spinner("🔧 Traitement en cours..."):
                 try:
-                    with tempfile.TemporaryDirectory() as temp_dir:
-                        temp_file_path = os.path.join(temp_dir, xml_file.name)
-                        with open(temp_file_path, 'wb') as f:
-                            f.write(xml_file.getvalue())
+                    # Sauvegarde du fichier original pour traitement
+                    temp_file_path = f"./uploaded_{xml_file.name}"
+                    with open(temp_file_path, "wb") as f:
+                        f.write(xml_file.getvalue())
 
-                        processed_file_path = process_file(temp_file_path, instructions, log_placeholder)
+                    # Appel du traitement
+                    processed_file_path = process_file(temp_file_path, instructions, log_placeholder)
 
-                        if os.path.exists(processed_file_path):
-                            with open(processed_file_path, 'rb') as f:
-                                file_content = f.read()
+                    # Vérifie si une version modifiée est dans corrected_files/
+                    original_filename = os.path.basename(temp_file_path)
+                    possible_corrected_path = os.path.join("corrected_files", original_filename)
 
-                            success_message = st.success("✅ Fichier traité avec succès !")
-                            
-                            col1, col2, col3 = st.columns([1, 2, 1])
+                    corrected_file_path = possible_corrected_path if os.path.exists(possible_corrected_path) else processed_file_path
+
+                    if os.path.exists(corrected_file_path):
+                        with open(corrected_file_path, "rb") as f:
+                            file_content = f.read()
+
+                        success_message = st.success("✅ Fichier traité avec succès !")
+
+                        col1, col2, col3 = st.columns([1, 2, 1])
+                        with col2:
+                            st.download_button(
+                                label="⬇️ Télécharger le fichier modifié",
+                                data=file_content,
+                                file_name="processed_" + os.path.basename(corrected_file_path),
+                                mime="application/xml",
+                                key="download_button",
+                                use_container_width=True
+                            )
+
+                        # Affichage fichiers + diff
+                        with open(temp_file_path, 'r', encoding='utf-8') as f:
+                            original_text = f.readlines()
+                        with open(corrected_file_path, 'r', encoding='utf-8') as f:
+                            modified_text = f.readlines()
+
+                        with preview_expander:
+                            col1, col2 = st.columns(2)
+
+                            with col1:
+                                st.markdown("##### 🧾 Fichier original")
+                                st.code("".join(original_text), language="xml")
+
                             with col2:
-                                st.download_button(
-                                    label="⬇️ Télécharger le fichier modifié",
-                                    data=file_content,
-                                    file_name="processed_" + os.path.basename(processed_file_path),
-                                    mime="application/xml",
-                                    key="download_button",
-                                    use_container_width=True
-                                )
-                        else:
-                            st.error("❌ Fichier modifié introuvable.")
+                                st.markdown("##### 🛠️ Fichier modifié")
+                                st.code("".join(modified_text), language="xml")
+
+                            st.markdown("##### 🔍 Différences entre original et modifié")
+                            diff = difflib.HtmlDiff(wrapcolumn=80).make_table(
+                                original_text,
+                                modified_text,
+                                "Original",
+                                "Modifié",
+                                context=True,
+                                numlines=2
+                            )
+                            st.components.v1.html(diff, scrolling=True, height=400)
+
+                    else:
+                        st.error("❌ Fichier modifié introuvable.")
+
                 except Exception as e:
                     st.error(f"❌ Erreur lors du traitement : {str(e)}")
 
