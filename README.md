@@ -13,8 +13,6 @@
 - [Experiment](#experiment)
 - [User Interface](#user-interface)
 - [How to Run](#how-to-run)
-- [Challenges Encountered](#challenges-encountered)
-- [Next Steps](#next-steps)
 
 ## **Project Scope**
 Imagine having to manually update and validate an XML document with hundreds of pages, it’s time-consuming and error-prone.
@@ -167,6 +165,15 @@ This approach, however, requires validation through additional testing across di
 
 
 ## 🚀 How to Run the Project  
+#### 1️⃣ Clone the Repository  
+```bash
+git clone git@github.com:Biline-dev/MLops_Project.git
+cd SmartXMLAnalyser/multi_agent_system
+```  
 
+#### 2️⃣ Start the Application  
+```bash
+docker-compose up  # Builds and runs the backend and frontend containers
+``` 
 
 
