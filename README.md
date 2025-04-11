@@ -167,7 +167,7 @@ This approach, however, requires validation through additional testing across di
 ## 🚀 How to Run the Project  
 #### 1️⃣ Clone the Repository  
 ```bash
-git clone git@github.com:Biline-dev/MLops_Project.git
+git clone git@github.com:Biline-dev/SmartXMLAnalyser.git
 cd SmartXMLAnalyser/multi_agent_system
 ```  
 
