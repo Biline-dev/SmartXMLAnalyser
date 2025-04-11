@@ -1,1 +1,0 @@
-In the flush step note within the procedure, update the note text from "If necessary, do the flush procedure again." to "Repeat the flush procedure if any detergent residue remains."

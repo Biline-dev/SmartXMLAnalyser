@@ -193,9 +193,14 @@ st.markdown("""
 
 
 def main():
+    # centred logo and title
+    
+    col1, col2, col3 = st.columns([1, 2, 1])  # Créer trois colonnes
+    with col2:  # Placer l'image dans la colonne du milieu
+        st.image("logo.png", width=250)  # Centrer l'image
     st.markdown('<div class="title-style">Smart - XML</div>', unsafe_allow_html=True)
     st.markdown('<div class="subtitle-style">Assistant intelligent de modification de documentation</div>', unsafe_allow_html=True)
-
+    
     # Exemple de prompt
     example_prompt = """
     Exemples d'instructions pour modifier le document XML :
@@ -209,7 +214,6 @@ def main():
 """.strip()
 
     with st.container():
-        st.markdown("#### 📝 Instructions")
         tab1, tab2 = st.tabs([" Prompt   ", "  Fichier d'instructions"])
         
         log_placeholder = st.empty()
@@ -283,11 +287,11 @@ def main():
     
     if process_clicked:
         if not xml_file:
-            st.warning("⚠️ Merci d'uploader un fichier XML")
+            st.warning(" Merci d'uploader un fichier XML")
         elif not instructions:
-            st.error("❌ Veuillez fournir des instructions valides")
+            st.error(" Veuillez fournir des instructions valides")
         else:
-            with st.spinner("🔧 Traitement en cours..."):
+            with st.spinner(" Traitement en cours..."):
                 try:
                     with tempfile.TemporaryDirectory() as temp_dir:
                         temp_file_path = os.path.join(temp_dir, xml_file.name)

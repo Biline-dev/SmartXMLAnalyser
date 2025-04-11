@@ -1,1 +1,0 @@
-In the consumables section, update the detergent product details by changing the product name from "ACME Middling Detergent 69" to "ACME Premium Detergent 69" and the short name from "Detergent A" to "Premium Detergent."

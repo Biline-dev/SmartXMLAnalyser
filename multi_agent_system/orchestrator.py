@@ -57,7 +57,7 @@ def orchestrator_llm(status, suggestions, instructions, xml_file_path, xpath, ha
         if result and result[0]:
             response = result[0]
             decision = response.strip().lower().split()[0]
-            print(f"🧠 Décision extraite de l'agent orchestrateur : {decision}")
+            print(f" Décision extraite de l'agent orchestrateur : {decision}")
 
             if decision == "correction":
                 print("❌ Correction requise.")
@@ -86,10 +86,10 @@ def orchestrator_llm(status, suggestions, instructions, xml_file_path, xpath, ha
         if 'conn' in locals() and conn:
             conn.close()
 
-
+"""
 if __name__ == "__main__":
 
-    prompt = """
+    prompt = 
         At the very beginning of the main procedure, add a new step that acts as a chapter header. This step should include a title with the text 'Pre-Operational Checks.
 
         As the first instruction within the 'Pre-Operational Checks' chapter, add a substep with a description: 'Inspect the brake lever for signs of wear or corrosion.
@@ -97,7 +97,7 @@ if __name__ == "__main__":
         As the second instruction within the 'Pre-Operational Checks' chapter, add a substep with a description: 'Ensure the hydraulic fluid is at the recommended level.
 
         Finally, as the third instruction within the 'Pre-Operational Checks' chapter, add a substep with a description: 'Verify that all mounting bolts are properly secured.
-    """
+    
 
     xml_file_path = "testing_cases/TC1_additions_1/base_documents/DMC-BRAKE-AAA-DA1-00-00-00AA-341A-A_002-00_en-US.XML"
     #instructions = "testing_cases/TC1_additions_1/instructions/" #with file
@@ -117,4 +117,4 @@ if __name__ == "__main__":
         elif decision == "stop":
             should_continue = False
 
-    print(f"\n✅ Le fichier XML final est valide et prêt : {xml_file_path}")
+    print(f"\n✅ Le fichier XML final est valide et prêt : {xml_file_path}")"""

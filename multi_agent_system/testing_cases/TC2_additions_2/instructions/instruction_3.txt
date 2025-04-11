@@ -1,9 +1,0 @@
-In the spare parts section, add a new spare item with the following details:
-
-Name: "Chain Tensioner"
-
-Quantity: 1 unit
-
-Part Reference: "CT-5678"
-
-Remarks: "This spare is essential for maintaining proper chain tension and should be replaced after extensive use."

@@ -1,4 +1,0 @@
-In the main procedure, update the final step’s text regarding the fork installation. Change the text from
-"Install the fork (…)"
-to
-"Carefully install the fork (…) ensuring proper alignment."
